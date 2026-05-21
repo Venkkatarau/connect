@@ -31,10 +31,15 @@ class _BatchVideosViewState extends State<BatchVideosView> {
     final batchesUrl = Uri.parse("$baseUrl/v1/admin/getAllBatches");
 
     try {
+      debugPrint("[API Request] GET: $modulesUrl");
+      debugPrint("[API Request] GET: $batchesUrl");
       final responses = await Future.wait([
         http.get(modulesUrl),
         http.get(batchesUrl),
       ]);
+
+      debugPrint("[API Response] GET: $modulesUrl | Status: ${responses[0].statusCode} | Body: ${responses[0].body}");
+      debugPrint("[API Response] GET: $batchesUrl | Status: ${responses[1].statusCode} | Body: ${responses[1].body}");
 
       if (responses[0].statusCode == 200 && responses[1].statusCode == 200) {
         if (!mounted) return;
@@ -60,13 +65,16 @@ class _BatchVideosViewState extends State<BatchVideosView> {
       "batchId": batchIds,
       "conceptIds": conceptId,
     };
+    final body = jsonEncode(payload);
 
     try {
+      debugPrint("[API Request] POST: $url | Body: $body");
       final response = await http.post(
         url,
         headers: {"Content-Type": "application/json"},
-        body: jsonEncode(payload),
+        body: body,
       );
+      debugPrint("[API Response] POST: $url | Status: ${response.statusCode} | Body: ${response.body}");
 
       if (response.statusCode == 200) {
         ScaffoldMessenger.of(context).showSnackBar(

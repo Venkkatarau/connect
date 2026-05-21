@@ -32,7 +32,11 @@ class _UserModuleScreenState extends State<UserModuleScreen> {
 
     final url = Uri.parse("$baseUrl/v1/getUserList");
     try {
+      debugPrint("[API Request] GET: $url");
       final response = await http.get(url);
+      debugPrint(
+        "[API Response] GET: $url | Status: ${response.statusCode} | Body: ${response.body}",
+      );
       if (response.statusCode == 200) {
         final List<dynamic> data = jsonDecode(response.body);
         setState(() {
@@ -55,7 +59,11 @@ class _UserModuleScreenState extends State<UserModuleScreen> {
   Future<void> _fetchBatches() async {
     final url = Uri.parse("$baseUrl/v1/admin/getAllBatches");
     try {
+      debugPrint("[API Request] GET: $url");
       final response = await http.get(url);
+      debugPrint(
+        "[API Response] GET: $url | Status: ${response.statusCode} | Body: ${response.body}",
+      );
       if (response.statusCode == 200) {
         final List<dynamic> data = jsonDecode(response.body);
         setState(() {
@@ -88,18 +96,24 @@ class _UserModuleScreenState extends State<UserModuleScreen> {
       _batchLoading = true;
     });
 
-    final url = Uri.parse("$baseUrl/v1/users/updateBatch/$userId?batchId=$batchId");
+    final url = Uri.parse(
+      "$baseUrl/v1/users/updateBatch/$userId?batchId=$batchId",
+    );
     try {
+      debugPrint("[API Request] PUT: $url");
       final response = await http.put(url);
+      debugPrint(
+        "[API Response] PUT: $url | Status: ${response.statusCode} | Body: ${response.body}",
+      );
       if (response.statusCode == 200) {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text("Batch updated successfully!")),
         );
         _fetchUsers();
       } else {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text("Failed to update batch")),
-        );
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(const SnackBar(content: Text("Failed to update batch")));
       }
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -135,14 +149,22 @@ class _UserModuleScreenState extends State<UserModuleScreen> {
                 children: [
                   Text(
                     "Assign Batch to ${user['username']}",
-                    style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Color(0xFF225663)),
+                    style: const TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Color(0xFF225663),
+                    ),
                     textAlign: TextAlign.center,
                   ),
                   const SizedBox(height: 16),
                   if (_batches.isEmpty)
                     const Padding(
                       padding: EdgeInsets.symmetric(vertical: 20),
-                      child: Text("No batches available", textAlign: TextAlign.center, style: TextStyle(color: Colors.grey)),
+                      child: Text(
+                        "No batches available",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(color: Colors.grey),
+                      ),
                     )
                   else
                     Flexible(
@@ -154,7 +176,9 @@ class _UserModuleScreenState extends State<UserModuleScreen> {
                           final isSelected = selectedBatchId == batch['id'];
                           return ListTile(
                             leading: Icon(
-                              isSelected ? Icons.radio_button_checked : Icons.radio_button_off,
+                              isSelected
+                                  ? Icons.radio_button_checked
+                                  : Icons.radio_button_off,
                               color: const Color(0xFF225663),
                             ),
                             title: Text(batch['name'] ?? ''),
@@ -173,21 +197,35 @@ class _UserModuleScreenState extends State<UserModuleScreen> {
                         ? null
                         : () async {
                             Navigator.pop(context);
-                            await _updateUserBatch(user['id'], selectedBatchId!);
+                            await _updateUserBatch(
+                              user['id'],
+                              selectedBatchId!,
+                            );
                           },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color(0xFF225663),
                       foregroundColor: Colors.white,
                       padding: const EdgeInsets.symmetric(vertical: 14),
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
                     ),
                     child: _batchLoading
                         ? const SizedBox(
                             width: 20,
                             height: 20,
-                            child: CircularProgressIndicator(color: Colors.white, strokeWidth: 2),
+                            child: CircularProgressIndicator(
+                              color: Colors.white,
+                              strokeWidth: 2,
+                            ),
                           )
-                        : const Text("Submit", style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                        : const Text(
+                            "Submit",
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
                   ),
                 ],
               ),
@@ -210,7 +248,11 @@ class _UserModuleScreenState extends State<UserModuleScreen> {
             children: [
               const Text(
                 "Users & Batches",
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Color(0xFF225663)),
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xFF225663),
+                ),
               ),
               const SizedBox(height: 16),
               // Search Bar
@@ -219,7 +261,11 @@ class _UserModuleScreenState extends State<UserModuleScreen> {
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(12),
                   boxShadow: [
-                    BoxShadow(color: Colors.black.withOpacity(0.05), blurRadius: 4, offset: const Offset(0, 2)),
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.05),
+                      blurRadius: 4,
+                      offset: const Offset(0, 2),
+                    ),
                   ],
                 ),
                 padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -236,14 +282,19 @@ class _UserModuleScreenState extends State<UserModuleScreen> {
               Expanded(
                 child: _loading
                     ? const Center(
-                        child: CircularProgressIndicator(color: Color(0xFF225663)),
+                        child: CircularProgressIndicator(
+                          color: Color(0xFF225663),
+                        ),
                       )
                     : RefreshIndicator(
                         onRefresh: _fetchUsers,
                         color: const Color(0xFF225663),
                         child: _filteredUsers.isEmpty
                             ? const Center(
-                                child: Text("No users found", style: TextStyle(color: Colors.grey)),
+                                child: Text(
+                                  "No users found",
+                                  style: TextStyle(color: Colors.grey),
+                                ),
                               )
                             : ListView.builder(
                                 itemCount: _filteredUsers.length,
@@ -252,28 +303,44 @@ class _UserModuleScreenState extends State<UserModuleScreen> {
                                   return Card(
                                     color: Colors.white,
                                     margin: const EdgeInsets.only(bottom: 12),
-                                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(12),
+                                    ),
                                     elevation: 2,
                                     child: ListTile(
                                       contentPadding: const EdgeInsets.all(16),
                                       title: Text(
                                         user['username'] ?? '',
-                                        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                                        style: const TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 18,
+                                        ),
                                       ),
                                       subtitle: Padding(
-                                        padding: const EdgeInsets.only(top: 8.0),
+                                        padding: const EdgeInsets.only(
+                                          top: 8.0,
+                                        ),
                                         child: Column(
-                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
                                           children: [
-                                            Text("Phone: ${user['mobileNumber'] ?? ''}"),
+                                            Text(
+                                              "Phone: ${user['mobileNumber'] ?? ''}",
+                                            ),
                                             const SizedBox(height: 4),
-                                            Text("Batch: ${user['batchName'] ?? 'No Batch Assigned'}"),
+                                            Text(
+                                              "Batch: ${user['batchName'] ?? 'No Batch Assigned'}",
+                                            ),
                                           ],
                                         ),
                                       ),
                                       trailing: IconButton(
-                                        icon: const Icon(Icons.edit, color: Color(0xFF225663)),
-                                        onPressed: () => _showBatchSelectionDialog(user),
+                                        icon: const Icon(
+                                          Icons.edit,
+                                          color: Color(0xFF225663),
+                                        ),
+                                        onPressed: () =>
+                                            _showBatchSelectionDialog(user),
                                       ),
                                     ),
                                   );

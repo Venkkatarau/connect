@@ -30,7 +30,9 @@ class _ModuleAccessScreenState extends State<ModuleAccessScreen> {
 
     final url = Uri.parse("$baseUrl/api/modules/pending-requests");
     try {
+      debugPrint("[API Request] GET: $url");
       final response = await http.get(url);
+      debugPrint("[API Response] GET: $url | Status: ${response.statusCode} | Body: ${response.body}");
       if (response.statusCode == 200) {
         final List<dynamic> data = jsonDecode(response.body);
         setState(() {
@@ -71,7 +73,9 @@ class _ModuleAccessScreenState extends State<ModuleAccessScreen> {
 
     final url = Uri.parse("$baseUrl/api/modules/approve/$id");
     try {
+      debugPrint("[API Request] GET: $url");
       final response = await http.get(url);
+      debugPrint("[API Response] GET: $url | Status: ${response.statusCode} | Body: ${response.body}");
       if (response.statusCode == 200) {
         final data = jsonDecode(response.body);
         if (data['status'] == false) {

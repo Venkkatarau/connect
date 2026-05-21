@@ -17,7 +17,10 @@ class _LoginScreenState extends State<LoginScreen> {
   bool _isOtpScreen = false;
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _mobileController = TextEditingController();
-  final List<TextEditingController> _otpControllers = List.generate(4, (_) => TextEditingController());
+  final List<TextEditingController> _otpControllers = List.generate(
+    4,
+    (_) => TextEditingController(),
+  );
   final List<FocusNode> _otpFocusNodes = List.generate(4, (_) => FocusNode());
 
   int _timerSeconds = 60;
@@ -60,14 +63,16 @@ class _LoginScreenState extends State<LoginScreen> {
       final url = '$baseUrl/v1/user/by-mobile?mobileNumber=$phone';
       debugPrint("[API Request] GET: $url");
       final res = await http.get(Uri.parse(url));
-      debugPrint("[API Response] GET: $url | Status: ${res.statusCode} | Body: ${res.body}");
+      debugPrint(
+        "[API Response] GET: $url | Status: ${res.statusCode} | Body: ${res.body}",
+      );
       if (res.statusCode == 200) {
         final userDetails = json.decode(res.body);
         GlobalUser.setGlobalUser(
           username: userDetails['username'] ?? name,
           mobileNumber: userDetails['mobileNumber'] ?? phone,
           userId: userDetails['id'] ?? 0,
-          batchId: userDetails['batchId'] ?? 1,
+          batchId: userDetails['batchId'] ?? 2,
         );
       } else {
         GlobalUser.setGlobalUser(username: name, mobileNumber: phone);
@@ -99,7 +104,9 @@ class _LoginScreenState extends State<LoginScreen> {
         body: json.encode(payload),
       );
 
-      debugPrint("[API Response] POST: $url | Status: ${response.statusCode} | Body: ${response.body}");
+      debugPrint(
+        "[API Response] POST: $url | Status: ${response.statusCode} | Body: ${response.body}",
+      );
       final data = json.decode(response.body);
 
       if (response.statusCode != 200) {
@@ -112,7 +119,10 @@ class _LoginScreenState extends State<LoginScreen> {
       if (data['status'] == false) {
         final String message = data['message'] ?? '';
         if (message.contains("already registered")) {
-          await _fetchAndSetUser(_usernameController.text, _mobileController.text);
+          await _fetchAndSetUser(
+            _usernameController.text,
+            _mobileController.text,
+          );
           if (mounted) {
             Navigator.of(context).pushReplacement(
               MaterialPageRoute(builder: (_) => const DashboardScreen()),
@@ -162,7 +172,9 @@ class _LoginScreenState extends State<LoginScreen> {
         headers: {"Content-Type": "application/json"},
       );
 
-      debugPrint("[API Response] POST: $url | Status: ${response.statusCode} | Body: ${response.body}");
+      debugPrint(
+        "[API Response] POST: $url | Status: ${response.statusCode} | Body: ${response.body}",
+      );
       final data = json.decode(response.body);
       if (data['status'] == false) {
         setState(() {
@@ -197,27 +209,20 @@ class _LoginScreenState extends State<LoginScreen> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Icon(
-            Icons.school_outlined,
-            size: 64,
-            color: Colors.white,
-          ),
+          const Icon(Icons.school_outlined, size: 64, color: Colors.white),
           const SizedBox(height: 12),
           Text(
             "ConnectThrive",
             style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  letterSpacing: 1.2,
-                ),
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+              letterSpacing: 1.2,
+            ),
           ),
           const SizedBox(height: 4),
           const Text(
             "Master Oracle Fusion Financials",
-            style: TextStyle(
-              color: Colors.white70,
-              fontSize: 14,
-            ),
+            style: TextStyle(color: Colors.white70, fontSize: 14),
           ),
         ],
       ),
@@ -225,7 +230,8 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   Widget _buildLoginInputCard() {
-    final isFormValid = _usernameController.text.trim().isNotEmpty &&
+    final isFormValid =
+        _usernameController.text.trim().isNotEmpty &&
         _mobileController.text.trim().length == 10;
 
     return Padding(
@@ -236,9 +242,9 @@ class _LoginScreenState extends State<LoginScreen> {
           Text(
             "Login or Signup",
             style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                  fontWeight: FontWeight.bold,
-                  color: const Color(0xFF225663),
-                ),
+              fontWeight: FontWeight.bold,
+              color: const Color(0xFF225663),
+            ),
           ),
           const SizedBox(height: 24),
           TextField(
@@ -269,7 +275,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                 ),
               ),
-              prefixIconConstraints: const BoxConstraints(minWidth: 0, minHeight: 0),
+              prefixIconConstraints: const BoxConstraints(
+                minWidth: 0,
+                minHeight: 0,
+              ),
               hintText: "Enter Mobile Number",
               counterText: "",
               filled: true,
@@ -335,15 +344,18 @@ class _LoginScreenState extends State<LoginScreen> {
                     _error = "";
                   });
                 },
-                icon: const Icon(Icons.arrow_back_ios, color: Color(0xFF225663)),
+                icon: const Icon(
+                  Icons.arrow_back_ios,
+                  color: Color(0xFF225663),
+                ),
               ),
               const SizedBox(width: 8),
               Text(
                 "OTP Verification",
                 style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                      fontWeight: FontWeight.bold,
-                      color: const Color(0xFF225663),
-                    ),
+                  fontWeight: FontWeight.bold,
+                  color: const Color(0xFF225663),
+                ),
               ),
             ],
           ),
@@ -364,7 +376,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   focusNode: _otpFocusNodes[index],
                   keyboardType: TextInputType.number,
                   textAlign: TextAlign.center,
-                  style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                  style: const TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
+                  ),
                   maxLength: 1,
                   decoration: InputDecoration(
                     counterText: "",
@@ -373,7 +388,10 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12),
-                      borderSide: const BorderSide(color: Color(0xFF225663), width: 2),
+                      borderSide: const BorderSide(
+                        color: Color(0xFF225663),
+                        width: 2,
+                      ),
                     ),
                   ),
                   onChanged: (value) {
@@ -382,7 +400,9 @@ class _LoginScreenState extends State<LoginScreen> {
                         _otpFocusNodes[index + 1].requestFocus();
                       } else {
                         FocusScope.of(context).unfocus();
-                        final fullOtp = _otpControllers.map((c) => c.text).join();
+                        final fullOtp = _otpControllers
+                            .map((c) => c.text)
+                            .join();
                         _handleSignupWithOtp(fullOtp);
                       }
                     } else if (index > 0) {
@@ -422,15 +442,15 @@ class _LoginScreenState extends State<LoginScreen> {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                )
+                ),
               ],
-            )
+            ),
           ],
           const SizedBox(height: 24),
           if (_loading)
             const Center(
               child: CircularProgressIndicator(color: Color(0xFF225663)),
-            )
+            ),
         ],
       ),
     );

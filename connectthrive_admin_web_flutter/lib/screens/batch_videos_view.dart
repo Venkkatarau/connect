@@ -37,6 +37,7 @@ class _BatchVideosViewState extends State<BatchVideosView> {
       ]);
 
       if (responses[0].statusCode == 200 && responses[1].statusCode == 200) {
+        if (!mounted) return;
         setState(() {
           _modules = jsonDecode(responses[0].body) ?? [];
           _batches = jsonDecode(responses[1].body) ?? [];
@@ -45,9 +46,11 @@ class _BatchVideosViewState extends State<BatchVideosView> {
     } catch (e) {
       debugPrint("Error fetching batch videos data: $e");
     } finally {
-      setState(() {
-        _loading = false;
-      });
+      if (mounted) {
+        setState(() {
+          _loading = false;
+        });
+      }
     }
   }
 

@@ -262,8 +262,9 @@ class _UploadVideoViewState extends State<UploadVideoView> {
                       children: [
                         Row(
                           children: [
-                            Expanded(
+                             Expanded(
                               child: DropdownButtonFormField<int>(
+                                isExpanded: true,
                                 decoration: const InputDecoration(
                                   labelText: "Select Batch*",
                                   border: OutlineInputBorder(),
@@ -285,6 +286,7 @@ class _UploadVideoViewState extends State<UploadVideoView> {
                             const SizedBox(width: 16),
                             Expanded(
                               child: DropdownButtonFormField<int>(
+                                isExpanded: true,
                                 decoration: const InputDecoration(
                                   labelText: "Select Module*",
                                   border: OutlineInputBorder(),
@@ -310,6 +312,7 @@ class _UploadVideoViewState extends State<UploadVideoView> {
                           children: [
                             Expanded(
                               child: DropdownButtonFormField<String>(
+                                isExpanded: true,
                                 decoration: const InputDecoration(
                                   labelText: "Select Video Type*",
                                   border: OutlineInputBorder(),

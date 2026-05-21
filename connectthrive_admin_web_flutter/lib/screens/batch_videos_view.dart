@@ -38,8 +38,10 @@ class _BatchVideosViewState extends State<BatchVideosView> {
         http.get(batchesUrl),
       ]);
 
-      debugPrint("[API Response] GET: $modulesUrl | Status: ${responses[0].statusCode} | Body: ${responses[0].body}");
-      debugPrint("[API Response] GET: $batchesUrl | Status: ${responses[1].statusCode} | Body: ${responses[1].body}");
+      debugPrint("[API Response] GET: $modulesUrl | Status: ${responses[0].statusCode}");
+      _printLongString("Body: ${responses[0].body}");
+      debugPrint("[API Response] GET: $batchesUrl | Status: ${responses[1].statusCode}");
+      _printLongString("Body: ${responses[1].body}");
 
       if (responses[0].statusCode == 200 && responses[1].statusCode == 200) {
         if (!mounted) return;
@@ -300,23 +302,27 @@ class _BatchVideosViewState extends State<BatchVideosView> {
                   title: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            batchName,
-                            style: const TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 18,
-                              color: Color(0xFF225663),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              batchName,
+                              style: const TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18,
+                                color: Color(0xFF225663),
+                              ),
+                              overflow: TextOverflow.ellipsis,
                             ),
-                          ),
-                          Text(
-                            "Batch ID: $batchId",
-                            style: const TextStyle(color: Colors.grey, fontSize: 12),
-                          ),
-                        ],
+                            Text(
+                              "Batch ID: $batchId",
+                              style: const TextStyle(color: Colors.grey, fontSize: 12),
+                            ),
+                          ],
+                        ),
                       ),
+                      const SizedBox(width: 8),
                       Chip(
                         label: Text(
                           "$totalVideos Videos",
@@ -400,5 +406,10 @@ class _BatchVideosViewState extends State<BatchVideosView> {
         ),
       ),
     );
+  }
+
+  void _printLongString(String text) {
+    final RegExp pattern = RegExp('.{1,800}');
+    pattern.allMatches(text).forEach((match) => debugPrint(match.group(0)));
   }
 }

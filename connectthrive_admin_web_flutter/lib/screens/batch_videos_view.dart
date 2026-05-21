@@ -280,6 +280,23 @@ class _BatchVideosViewState extends State<BatchVideosView> {
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: ExpansionTile(
+                  onExpansionChanged: (isExpanded) {
+                    if (isExpanded) {
+                      debugPrint("--- Batch Expanded: $batchName (ID: $batchId) ---");
+                      for (var module in batchModules) {
+                        debugPrint("  Module: ${module['name']} (ID: ${module['id']})");
+                        final concepts = module['concepts'] as List;
+                        final transConcepts = module['transactionConcepts'] as List;
+                        for (var c in concepts) {
+                          debugPrint("    - [SetUp] ${c['title']} (ID: ${c['id']}, File: ${c['videoUrl']})");
+                        }
+                        for (var c in transConcepts) {
+                          debugPrint("    - [Transaction] ${c['title']} (ID: ${c['id']}, File: ${c['videoUrl']})");
+                        }
+                      }
+                      debugPrint("---------------------------------------------");
+                    }
+                  },
                   title: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [

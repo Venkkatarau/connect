@@ -1,0 +1,1967 @@
+Compiling lib/main.dart for the Web...                          
+Wasm dry run succeeded. Consider building and testing your application with the `--wasm` flag. See docs for more info: https://docs.flutter.dev/platform-integration/web/wasm
+Use --no-wasm-dry-run to disable these warnings.
+Target dart2js failed: ProcessException: Process exited abnormally with exit code 1:
+lib/main.dart:1:8:
+Error: Error when reading '../../Dev/flutter/packages/flutter/lib/material': Error reading '../../Dev/flutter/packages/flutter/lib/material'  (No such file or directory)
+import 'package:flutter/material';
+       ^
+lib/screens/login_screen.dart:3:8:
+Error: Error when reading '../../Dev/flutter/packages/flutter/lib/material': Error reading '../../Dev/flutter/packages/flutter/lib/material'  (No such file or directory)
+import 'package:flutter/material';
+       ^
+lib/screens/courses_screen.dart:2:8:
+Error: Error when reading '../../Dev/flutter/packages/flutter/lib/material': Error reading '../../Dev/flutter/packages/flutter/lib/material'  (No such file or directory)
+import 'package:flutter/material';
+       ^
+lib/screens/concept_video_screen.dart:1:8:
+Error: Error when reading '../../Dev/flutter/packages/flutter/lib/material': Error reading '../../Dev/flutter/packages/flutter/lib/material'  (No such file or directory)
+import 'package:flutter/material';
+       ^
+lib/main.dart:9:32:
+Error: Type 'StatelessWidget' not found.
+class ConnectThriveApp extends StatelessWidget {
+                               ^^^^^^^^^^^^^^^
+lib/main.dart:13:3:
+Error: Type 'Widget' not found.
+  Widget build(BuildContext context) {
+  ^^^^^^
+lib/main.dart:13:16:
+Error: Type 'BuildContext' not found.
+  Widget build(BuildContext context) {
+               ^^^^^^^^^^^^
+lib/screens/login_screen.dart:9:27:
+Error: Type 'StatefulWidget' not found.
+class LoginScreen extends StatefulWidget {
+                          ^^^^^^^^^^^^^^
+lib/screens/login_screen.dart:13:3:
+Error: Type 'State' not found.
+  State<LoginScreen> createState() => _LoginScreenState();
+  ^^^^^
+lib/screens/login_screen.dart:16:33:
+Error: Type 'State' not found.
+class _LoginScreenState extends State<LoginScreen> {
+                                ^^^^^
+lib/screens/login_screen.dart:18:9:
+Error: Type 'TextEditingController' not found.
+  final TextEditingController _usernameController = TextEditingController();
+        ^^^^^^^^^^^^^^^^^^^^^
+lib/screens/login_screen.dart:19:9:
+Error: Type 'TextEditingController' not found.
+  final TextEditingController _mobileController = TextEditingController();
+        ^^^^^^^^^^^^^^^^^^^^^
+lib/screens/login_screen.dart:20:14:
+Error: Type 'TextEditingController' not found.
+  final List<TextEditingController> _otpControllers = List.generate(4, (_) => TextEditingController());
+             ^^^^^^^^^^^^^^^^^^^^^
+lib/screens/login_screen.dart:21:14:
+Error: Type 'FocusNode' not found.
+  final List<FocusNode> _otpFocusNodes = List.generate(4, (_) => FocusNode());
+             ^^^^^^^^^
+lib/screens/login_screen.dart:189:3:
+Error: Type 'Widget' not found.
+  Widget _buildTopBanner() {
+  ^^^^^^
+lib/screens/login_screen.dart:224:3:
+Error: Type 'Widget' not found.
+  Widget _buildLoginInputCard() {
+  ^^^^^^
+lib/screens/login_screen.dart:320:3:
+Error: Type 'Widget' not found.
+  Widget _buildOtpCard() {
+  ^^^^^^
+lib/screens/login_screen.dart:437:3:
+Error: Type 'Widget' not found.
+  Widget build(BuildContext context) {
+  ^^^^^^
+lib/screens/login_screen.dart:437:16:
+Error: Type 'BuildContext' not found.
+  Widget build(BuildContext context) {
+               ^^^^^^^^^^^^
+lib/screens/courses_screen.dart:9:29:
+Error: Type 'StatefulWidget' not found.
+class CoursesScreen extends StatefulWidget {
+                            ^^^^^^^^^^^^^^
+lib/screens/courses_screen.dart:13:3:
+Error: Type 'State' not found.
+  State<CoursesScreen> createState() => _CoursesScreenState();
+  ^^^^^
+lib/screens/courses_screen.dart:16:35:
+Error: Type 'State' not found.
+class _CoursesScreenState extends State<CoursesScreen> {
+                                  ^^^^^
+lib/screens/courses_screen.dart:91:3:
+Error: Type 'Widget' not found.
+  Widget _buildOutcomeSection() {
+  ^^^^^^
+lib/screens/courses_screen.dart:132:3:
+Error: Type 'Widget' not found.
+  Widget _buildConceptRow(Concept concept, Module module) {
+  ^^^^^^
+lib/screens/courses_screen.dart:208:3:
+Error: Type 'Widget' not found.
+  Widget _buildModuleCard(Module module) {
+  ^^^^^^
+lib/screens/courses_screen.dart:302:3:
+Error: Type 'Widget' not found.
+  Widget build(BuildContext context) {
+  ^^^^^^
+lib/screens/courses_screen.dart:302:16:
+Error: Type 'BuildContext' not found.
+  Widget build(BuildContext context) {
+               ^^^^^^^^^^^^
+lib/screens/concept_video_screen.dart:6:34:
+Error: Type 'StatefulWidget' not found.
+class ConceptVideoScreen extends StatefulWidget {
+                                 ^^^^^^^^^^^^^^
+lib/screens/concept_video_screen.dart:17:3:
+Error: Type 'State' not found.
+  State<ConceptVideoScreen> createState() => _ConceptVideoScreenState();
+  ^^^^^
+lib/screens/concept_video_screen.dart:20:40:
+Error: Type 'State' not found.
+class _ConceptVideoScreenState extends State<ConceptVideoScreen> {
+                                       ^^^^^
+lib/screens/concept_video_screen.dart:73:3:
+Error: Type 'Widget' not found.
+  Widget build(BuildContext context) {
+  ^^^^^^
+lib/screens/concept_video_screen.dart:73:16:
+Error: Type 'BuildContext' not found.
+  Widget build(BuildContext context) {
+               ^^^^^^^^^^^^
+lib/main.dart:6:3:
+Error: Method not found: 'runApp'.
+  runApp(const ConnectThriveApp());
+  ^^^^^^
+lib/main.dart:13:16:
+Error: 'BuildContext' isn't a type.
+  Widget build(BuildContext context) {
+               ^^^^^^^^^^^^
+lib/main.dart:19:28:
+Error: Not a constant expression.
+          seedColor: const Color(0xFF225663),
+                           ^^^^^
+lib/main.dart:20:26:
+Error: Not a constant expression.
+          primary: const Color(0xFF225663),
+                         ^^^^^
+lib/main.dart:18:22:
+Error: The getter 'ColorScheme' isn't defined for the type 'ConnectThriveApp'.
+ - 'ConnectThriveApp' is from 'package:connectthrive_flutter/main.dart' ('lib/main.dart').
+        colorScheme: ColorScheme.fromSeed(
+                     ^^^^^^^^^^^
+lib/main.dart:17:14:
+Error: The method 'ThemeData' isn't defined for the type 'ConnectThriveApp'.
+ - 'ConnectThriveApp' is from 'package:connectthrive_flutter/main.dart' ('lib/main.dart').
+      theme: ThemeData(
+             ^^^^^^^^^
+lib/main.dart:14:12:
+Error: The method 'MaterialApp' isn't defined for the type 'ConnectThriveApp'.
+ - 'ConnectThriveApp' is from 'package:connectthrive_flutter/main.dart' ('lib/main.dart').
+    return MaterialApp(
+           ^^^^^^^^^^^
+lib/screens/login_screen.dart:18:9:
+Error: 'TextEditingController' isn't a type.
+  final TextEditingController _usernameController = TextEditingController();
+        ^^^^^^^^^^^^^^^^^^^^^
+lib/screens/login_screen.dart:18:53:
+Error: Method not found: 'TextEditingController'.
+  final TextEditingController _usernameController = TextEditingController();
+                                                    ^^^^^^^^^^^^^^^^^^^^^
+lib/screens/login_screen.dart:19:9:
+Error: 'TextEditingController' isn't a type.
+  final TextEditingController _mobileController = TextEditingController();
+        ^^^^^^^^^^^^^^^^^^^^^
+lib/screens/login_screen.dart:19:51:
+Error: Method not found: 'TextEditingController'.
+  final TextEditingController _mobileController = TextEditingController();
+                                                  ^^^^^^^^^^^^^^^^^^^^^
+lib/screens/login_screen.dart:20:14:
+Error: 'TextEditingController' isn't a type.
+  final List<TextEditingController> _otpControllers = List.generate(4, (_) => TextEditingController());
+             ^^^^^^^^^^^^^^^^^^^^^
+lib/screens/login_screen.dart:20:79:
+Error: Method not found: 'TextEditingController'.
+  final List<TextEditingController> _otpControllers = List.generate(4, (_) => TextEditingController());
+                                                                              ^^^^^^^^^^^^^^^^^^^^^
+lib/screens/login_screen.dart:21:14:
+Error: 'FocusNode' isn't a type.
+  final List<FocusNode> _otpFocusNodes = List.generate(4, (_) => FocusNode());
+             ^^^^^^^^^
+lib/screens/login_screen.dart:21:66:
+Error: Method not found: 'FocusNode'.
+  final List<FocusNode> _otpFocusNodes = List.generate(4, (_) => FocusNode());
+                                                                 ^^^^^^^^^
+lib/screens/login_screen.dart:33:9:
+Error: The method 'setState' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+        setState(() {
+        ^^^^^^^^
+lib/screens/login_screen.dart:37:9:
+Error: The method 'setState' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+        setState(() {
+        ^^^^^^^^
+lib/screens/login_screen.dart:55:11:
+Error: Superclass has no method named 'dispose'.
+    super.dispose();
+          ^^^^^^^
+lib/screens/login_screen.dart:73:7:
+Error: The method 'debugPrint' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+      debugPrint("Failed to fetch dynamic user info: $e");
+      ^^^^^^^^^^
+lib/screens/login_screen.dart:79:5:
+Error: The method 'setState' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+    setState(() {
+    ^^^^^^^^
+lib/screens/login_screen.dart:99:9:
+Error: The method 'setState' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+        setState(() {
+        ^^^^^^^^
+lib/screens/login_screen.dart:109:15:
+Error: The getter 'mounted' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+          if (mounted) {
+              ^^^^^^^
+lib/screens/login_screen.dart:110:13:
+Error: The getter 'Navigator' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+            Navigator.of(context).pushReplacement(
+            ^^^^^^^^^
+lib/screens/login_screen.dart:110:26:
+Error: The getter 'context' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+            Navigator.of(context).pushReplacement(
+                         ^^^^^^^
+lib/screens/login_screen.dart:111:15:
+Error: The method 'MaterialPageRoute' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+              MaterialPageRoute(builder: (_) => const CoursesScreen()),
+              ^^^^^^^^^^^^^^^^^
+lib/screens/login_screen.dart:116:9:
+Error: The method 'setState' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+        setState(() {
+        ^^^^^^^^
+lib/screens/login_screen.dart:123:11:
+Error: The getter 'mounted' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+      if (mounted) {
+          ^^^^^^^
+lib/screens/login_screen.dart:124:9:
+Error: The getter 'Navigator' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+        Navigator.of(context).pushReplacement(
+        ^^^^^^^^^
+lib/screens/login_screen.dart:124:22:
+Error: The getter 'context' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+        Navigator.of(context).pushReplacement(
+                     ^^^^^^^
+lib/screens/login_screen.dart:125:11:
+Error: The method 'MaterialPageRoute' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+          MaterialPageRoute(builder: (_) => const CoursesScreen()),
+          ^^^^^^^^^^^^^^^^^
+lib/screens/login_screen.dart:129:7:
+Error: The method 'setState' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+      setState(() {
+      ^^^^^^^^
+lib/screens/login_screen.dart:133:7:
+Error: The method 'setState' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+      setState(() {
+      ^^^^^^^^
+lib/screens/login_screen.dart:145:5:
+Error: The method 'setState' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+    setState(() {
+    ^^^^^^^^
+lib/screens/login_screen.dart:157:9:
+Error: The method 'setState' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+        setState(() {
+        ^^^^^^^^
+lib/screens/login_screen.dart:165:9:
+Error: The method 'setState' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+        setState(() {
+        ^^^^^^^^
+lib/screens/login_screen.dart:171:7:
+Error: The method 'setState' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+      setState(() {
+      ^^^^^^^^
+lib/screens/login_screen.dart:179:7:
+Error: The method 'setState' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+      setState(() {
+      ^^^^^^^^
+lib/screens/login_screen.dart:183:7:
+Error: The method 'setState' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+      setState(() {
+      ^^^^^^^^
+lib/screens/login_screen.dart:192:20:
+Error: Not a constant expression.
+      color: const Color(0xFF225663),
+                   ^^^^^
+lib/screens/login_screen.dart:198:13:
+Error: Not a constant expression.
+            Icons.school_outlined,
+            ^^^^^
+lib/screens/login_screen.dart:200:20:
+Error: Not a constant expression.
+            color: Colors.white,
+                   ^^^^^^
+lib/screens/login_screen.dart:197:17:
+Error: Not a constant expression.
+          const Icon(
+                ^^^^
+lib/screens/login_screen.dart:202:17:
+Error: Not a constant expression.
+          const SizedBox(height: 12),
+                ^^^^^^^^
+lib/screens/login_screen.dart:211:17:
+Error: Not a constant expression.
+          const SizedBox(height: 4),
+                ^^^^^^^^
+lib/screens/login_screen.dart:215:22:
+Error: Not a constant expression.
+              color: Colors.white70,
+                     ^^^^^^
+lib/screens/login_screen.dart:214:20:
+Error: Not a constant expression.
+            style: TextStyle(
+                   ^^^^^^^^^
+lib/screens/login_screen.dart:212:17:
+Error: Not a constant expression.
+          const Text(
+                ^^^^
+lib/screens/login_screen.dart:191:15:
+Error: The getter 'MediaQuery' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+      height: MediaQuery.of(context).size.height * 0.35,
+              ^^^^^^^^^^
+lib/screens/login_screen.dart:191:29:
+Error: The getter 'context' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+      height: MediaQuery.of(context).size.height * 0.35,
+                            ^^^^^^^
+lib/screens/login_screen.dart:193:18:
+Error: The getter 'Alignment' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+      alignment: Alignment.center,
+                 ^^^^^^^^^
+lib/screens/login_screen.dart:195:28:
+Error: The getter 'MainAxisAlignment' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+        mainAxisAlignment: MainAxisAlignment.center,
+                           ^^^^^^^^^^^^^^^^^
+lib/screens/login_screen.dart:205:20:
+Error: The getter 'Theme' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+            style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                   ^^^^^
+lib/screens/login_screen.dart:205:29:
+Error: The getter 'context' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+            style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                            ^^^^^^^
+lib/screens/login_screen.dart:206:26:
+Error: The getter 'Colors' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+                  color: Colors.white,
+                         ^^^^^^
+lib/screens/login_screen.dart:207:31:
+Error: The getter 'FontWeight' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+                  fontWeight: FontWeight.bold,
+                              ^^^^^^^^^^
+lib/screens/login_screen.dart:203:11:
+Error: The method 'Text' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+          Text(
+          ^^^^
+lib/screens/login_screen.dart:194:14:
+Error: The method 'Column' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+      child: Column(
+             ^^^^^^
+lib/screens/login_screen.dart:190:12:
+Error: The method 'Container' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+    return Container(
+           ^^^^^^^^^
+lib/screens/login_screen.dart:229:22:
+Error: Couldn't find constructor 'EdgeInsets.symmetric'.
+      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 32),
+                     ^^^^^^^^^^
+lib/screens/login_screen.dart:237:32:
+Error: Not a constant expression.
+                  color: const Color(0xFF225663),
+                               ^^^^^
+lib/screens/login_screen.dart:240:17:
+Error: Not a constant expression.
+          const SizedBox(height: 24),
+                ^^^^^^^^
+lib/screens/login_screen.dart:245:38:
+Error: Not a constant expression.
+              prefixIcon: const Icon(Icons.person_outline),
+                                     ^^^^^
+lib/screens/login_screen.dart:245:33:
+Error: Not a constant expression.
+              prefixIcon: const Icon(Icons.person_outline),
+                                ^^^^
+lib/screens/login_screen.dart:248:32:
+Error: Not a constant expression.
+              fillColor: const Color(0xFFF3F3F3),
+                               ^^^^^
+lib/screens/login_screen.dart:255:17:
+Error: Not a constant expression.
+          const SizedBox(height: 16),
+                ^^^^^^^^
+lib/screens/login_screen.dart:263:26:
+Error: Not a constant expression.
+                padding: EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+                         ^^^^^^^^^^
+lib/screens/login_screen.dart:263:37:
+Error: Method invocation is not a constant expression.
+                padding: EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+                                    ^^^^^^^^^
+lib/screens/login_screen.dart:266:62:
+Error: Not a constant expression.
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                                                             ^^^^^^^^^^
+lib/screens/login_screen.dart:266:26:
+Error: Not a constant expression.
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                         ^^^^^^^^^
+lib/screens/login_screen.dart:264:24:
+Error: Not a constant expression.
+                child: Text(
+                       ^^^^
+lib/screens/login_screen.dart:262:33:
+Error: Not a constant expression.
+              prefixIcon: const Padding(
+                                ^^^^^^^
+lib/screens/login_screen.dart:269:44:
+Error: Not a constant expression.
+              prefixIconConstraints: const BoxConstraints(minWidth: 0, minHeight: 0),
+                                           ^^^^^^^^^^^^^^
+lib/screens/login_screen.dart:273:32:
+Error: Not a constant expression.
+              fillColor: const Color(0xFFF3F3F3),
+                               ^^^^^
+lib/screens/login_screen.dart:280:17:
+Error: Not a constant expression.
+          const SizedBox(height: 24),
+                ^^^^^^^^
+lib/screens/login_screen.dart:284:45:
+Error: Not a constant expression.
+              style: const TextStyle(color: Colors.red),
+                                            ^^^^^^
+lib/screens/login_screen.dart:284:28:
+Error: Not a constant expression.
+              style: const TextStyle(color: Colors.red),
+                           ^^^^^^^^^
+lib/screens/login_screen.dart:287:19:
+Error: Not a constant expression.
+            const SizedBox(height: 16),
+                  ^^^^^^^^
+lib/screens/login_screen.dart:292:38:
+Error: Not a constant expression.
+              backgroundColor: const Color(0xFF225663),
+                                     ^^^^^
+lib/screens/login_screen.dart:296:30:
+Error: Couldn't find constructor 'EdgeInsets.symmetric'.
+              padding: const EdgeInsets.symmetric(vertical: 16),
+                             ^^^^^^^^^^
+lib/screens/login_screen.dart:307:30:
+Error: Not a constant expression.
+                      color: Colors.white,
+                             ^^^^^^
+lib/screens/login_screen.dart:305:28:
+Error: Not a constant expression.
+                    child: CircularProgressIndicator(
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^
+lib/screens/login_screen.dart:302:25:
+Error: Not a constant expression.
+                ? const SizedBox(
+                        ^^^^^^^^
+lib/screens/login_screen.dart:312:64:
+Error: Not a constant expression.
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                                                               ^^^^^^^^^^
+lib/screens/login_screen.dart:312:28:
+Error: Not a constant expression.
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                           ^^^^^^^^^
+lib/screens/login_screen.dart:310:25:
+Error: Not a constant expression.
+                : const Text(
+                        ^^^^
+lib/screens/login_screen.dart:231:29:
+Error: The getter 'CrossAxisAlignment' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+                            ^^^^^^^^^^^^^^^^^^
+lib/screens/login_screen.dart:235:20:
+Error: The getter 'Theme' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+            style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                   ^^^^^
+lib/screens/login_screen.dart:235:29:
+Error: The getter 'context' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+            style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                            ^^^^^^^
+lib/screens/login_screen.dart:236:31:
+Error: The getter 'FontWeight' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+                  fontWeight: FontWeight.bold,
+                              ^^^^^^^^^^
+lib/screens/login_screen.dart:233:11:
+Error: The method 'Text' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+          Text(
+          ^^^^
+lib/screens/login_screen.dart:250:31:
+Error: The getter 'BorderRadius' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+                borderRadius: BorderRadius.circular(12),
+                              ^^^^^^^^^^^^
+lib/screens/login_screen.dart:251:29:
+Error: The getter 'BorderSide' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+                borderSide: BorderSide.none,
+                            ^^^^^^^^^^
+lib/screens/login_screen.dart:249:23:
+Error: The method 'OutlineInputBorder' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+              border: OutlineInputBorder(
+                      ^^^^^^^^^^^^^^^^^^
+lib/screens/login_screen.dart:244:25:
+Error: The method 'InputDecoration' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+            decoration: InputDecoration(
+                        ^^^^^^^^^^^^^^^
+lib/screens/login_screen.dart:243:31:
+Error: The method 'setState' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+            onChanged: (_) => setState(() {}),
+                              ^^^^^^^^
+lib/screens/login_screen.dart:241:11:
+Error: The method 'TextField' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+          TextField(
+          ^^^^^^^^^
+lib/screens/login_screen.dart:258:27:
+Error: The getter 'TextInputType' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+            keyboardType: TextInputType.phone,
+                          ^^^^^^^^^^^^^
+lib/screens/login_screen.dart:275:31:
+Error: The getter 'BorderRadius' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+                borderRadius: BorderRadius.circular(12),
+                              ^^^^^^^^^^^^
+lib/screens/login_screen.dart:276:29:
+Error: The getter 'BorderSide' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+                borderSide: BorderSide.none,
+                            ^^^^^^^^^^
+lib/screens/login_screen.dart:274:23:
+Error: The method 'OutlineInputBorder' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+              border: OutlineInputBorder(
+                      ^^^^^^^^^^^^^^^^^^
+lib/screens/login_screen.dart:261:25:
+Error: The method 'InputDecoration' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+            decoration: InputDecoration(
+                        ^^^^^^^^^^^^^^^
+lib/screens/login_screen.dart:260:31:
+Error: The method 'setState' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+            onChanged: (_) => setState(() {}),
+                              ^^^^^^^^
+lib/screens/login_screen.dart:256:11:
+Error: The method 'TextField' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+          TextField(
+          ^^^^^^^^^
+lib/screens/login_screen.dart:285:26:
+Error: The getter 'TextAlign' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+              textAlign: TextAlign.center,
+                         ^^^^^^^^^
+lib/screens/login_screen.dart:282:13:
+Error: The method 'Text' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+            Text(
+            ^^^^
+lib/screens/login_screen.dart:291:20:
+Error: The getter 'ElevatedButton' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+            style: ElevatedButton.styleFrom(
+                   ^^^^^^^^^^^^^^
+lib/screens/login_screen.dart:293:32:
+Error: The getter 'Colors' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+              foregroundColor: Colors.white,
+                               ^^^^^^
+lib/screens/login_screen.dart:294:40:
+Error: The getter 'Colors' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+              disabledBackgroundColor: Colors.grey[300],
+                                       ^^^^^^
+lib/screens/login_screen.dart:295:40:
+Error: The getter 'Colors' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+              disabledForegroundColor: Colors.grey[600],
+                                       ^^^^^^
+lib/screens/login_screen.dart:298:31:
+Error: The getter 'BorderRadius' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+                borderRadius: BorderRadius.circular(12),
+                              ^^^^^^^^^^^^
+lib/screens/login_screen.dart:297:22:
+Error: The method 'RoundedRectangleBorder' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+              shape: RoundedRectangleBorder(
+                     ^^^^^^^^^^^^^^^^^^^^^^
+lib/screens/login_screen.dart:289:11:
+Error: The method 'ElevatedButton' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+          ElevatedButton(
+          ^^^^^^^^^^^^^^
+lib/screens/login_screen.dart:230:14:
+Error: The method 'Column' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+      child: Column(
+             ^^^^^^
+lib/screens/login_screen.dart:228:12:
+Error: The method 'Padding' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+    return Padding(
+           ^^^^^^^
+lib/screens/login_screen.dart:322:22:
+Error: Couldn't find constructor 'EdgeInsets.symmetric'.
+      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 32),
+                     ^^^^^^^^^^
+lib/screens/login_screen.dart:335:34:
+Error: Not a constant expression.
+                icon: const Icon(Icons.arrow_back_ios, color: Color(0xFF225663)),
+                                 ^^^^^
+lib/screens/login_screen.dart:335:63:
+Error: Not a constant expression.
+                icon: const Icon(Icons.arrow_back_ios, color: Color(0xFF225663)),
+                                                              ^^^^^
+lib/screens/login_screen.dart:335:29:
+Error: Not a constant expression.
+                icon: const Icon(Icons.arrow_back_ios, color: Color(0xFF225663)),
+                            ^^^^
+lib/screens/login_screen.dart:337:21:
+Error: Not a constant expression.
+              const SizedBox(width: 8),
+                    ^^^^^^^^
+lib/screens/login_screen.dart:342:36:
+Error: Not a constant expression.
+                      color: const Color(0xFF225663),
+                                   ^^^^^
+lib/screens/login_screen.dart:347:17:
+Error: Not a constant expression.
+          const SizedBox(height: 12),
+                ^^^^^^^^
+lib/screens/login_screen.dart:350:43:
+Error: Not a constant expression.
+            style: const TextStyle(color: Colors.grey, fontSize: 14),
+                                          ^^^^^^
+lib/screens/login_screen.dart:350:26:
+Error: Not a constant expression.
+            style: const TextStyle(color: Colors.grey, fontSize: 14),
+                         ^^^^^^^^^
+lib/screens/login_screen.dart:352:17:
+Error: Not a constant expression.
+          const SizedBox(height: 32),
+                ^^^^^^^^
+lib/screens/login_screen.dart:364:68:
+Error: Not a constant expression.
+                  style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                                                                   ^^^^^^^^^^
+lib/screens/login_screen.dart:364:32:
+Error: Not a constant expression.
+                  style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                               ^^^^^^^^^
+lib/screens/login_screen.dart:373:59:
+Error: Not a constant expression.
+                      borderSide: const BorderSide(color: Color(0xFF225663), width: 2),
+                                                          ^^^^^
+lib/screens/login_screen.dart:373:41:
+Error: Not a constant expression.
+                      borderSide: const BorderSide(color: Color(0xFF225663), width: 2),
+                                        ^^^^^^^^^^
+lib/screens/login_screen.dart:393:17:
+Error: Not a constant expression.
+          const SizedBox(height: 24),
+                ^^^^^^^^
+lib/screens/login_screen.dart:397:45:
+Error: Not a constant expression.
+              style: const TextStyle(color: Colors.red),
+                                            ^^^^^^
+lib/screens/login_screen.dart:397:28:
+Error: Not a constant expression.
+              style: const TextStyle(color: Colors.red),
+                           ^^^^^^^^^
+lib/screens/login_screen.dart:400:19:
+Error: Not a constant expression.
+            const SizedBox(height: 16),
+                  ^^^^^^^^
+lib/screens/login_screen.dart:405:45:
+Error: Not a constant expression.
+              style: const TextStyle(color: Colors.grey),
+                                            ^^^^^^
+lib/screens/login_screen.dart:405:28:
+Error: Not a constant expression.
+              style: const TextStyle(color: Colors.grey),
+                           ^^^^^^^^^
+lib/screens/login_screen.dart:412:23:
+Error: Not a constant expression.
+                const Text("Didn't receive OTP? "),
+                      ^^^^
+lib/screens/login_screen.dart:418:30:
+Error: Not a constant expression.
+                      color: Color(0xFF225663),
+                             ^^^^^
+lib/screens/login_screen.dart:419:35:
+Error: Not a constant expression.
+                      fontWeight: FontWeight.bold,
+                                  ^^^^^^^^^^
+lib/screens/login_screen.dart:417:28:
+Error: Not a constant expression.
+                    style: TextStyle(
+                           ^^^^^^^^^
+lib/screens/login_screen.dart:415:32:
+Error: Not a constant expression.
+                  child: const Text(
+                               ^^^^
+lib/screens/login_screen.dart:426:17:
+Error: Not a constant expression.
+          const SizedBox(height: 24),
+                ^^^^^^^^
+lib/screens/login_screen.dart:429:55:
+Error: Not a constant expression.
+              child: CircularProgressIndicator(color: Color(0xFF225663)),
+                                                      ^^^^^
+lib/screens/login_screen.dart:429:22:
+Error: Not a constant expression.
+              child: CircularProgressIndicator(color: Color(0xFF225663)),
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^
+lib/screens/login_screen.dart:428:19:
+Error: Not a constant expression.
+            const Center(
+                  ^^^^^^
+lib/screens/login_screen.dart:324:29:
+Error: The getter 'CrossAxisAlignment' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+                            ^^^^^^^^^^^^^^^^^^
+lib/screens/login_screen.dart:330:19:
+Error: The method 'setState' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+                  setState(() {
+                  ^^^^^^^^
+lib/screens/login_screen.dart:328:15:
+Error: The method 'IconButton' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+              IconButton(
+              ^^^^^^^^^^
+lib/screens/login_screen.dart:340:24:
+Error: The getter 'Theme' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+                style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                       ^^^^^
+lib/screens/login_screen.dart:340:33:
+Error: The getter 'context' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+                style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                                ^^^^^^^
+lib/screens/login_screen.dart:341:35:
+Error: The getter 'FontWeight' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+                      fontWeight: FontWeight.bold,
+                                  ^^^^^^^^^^
+lib/screens/login_screen.dart:338:15:
+Error: The method 'Text' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+              Text(
+              ^^^^
+lib/screens/login_screen.dart:326:11:
+Error: The method 'Row' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+          Row(
+          ^^^
+lib/screens/login_screen.dart:348:11:
+Error: The method 'Text' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+          Text(
+          ^^^^
+lib/screens/login_screen.dart:354:32:
+Error: The getter 'MainAxisAlignment' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                               ^^^^^^^^^^^^^^^^^
+lib/screens/login_screen.dart:362:33:
+Error: The getter 'TextInputType' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+                  keyboardType: TextInputType.number,
+                                ^^^^^^^^^^^^^
+lib/screens/login_screen.dart:363:30:
+Error: The getter 'TextAlign' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+                  textAlign: TextAlign.center,
+                             ^^^^^^^^^
+lib/screens/login_screen.dart:369:37:
+Error: The getter 'BorderRadius' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+                      borderRadius: BorderRadius.circular(12),
+                                    ^^^^^^^^^^^^
+lib/screens/login_screen.dart:368:29:
+Error: The method 'OutlineInputBorder' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+                    border: OutlineInputBorder(
+                            ^^^^^^^^^^^^^^^^^^
+lib/screens/login_screen.dart:372:37:
+Error: The getter 'BorderRadius' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+                      borderRadius: BorderRadius.circular(12),
+                                    ^^^^^^^^^^^^
+lib/screens/login_screen.dart:371:36:
+Error: The method 'OutlineInputBorder' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+                    focusedBorder: OutlineInputBorder(
+                                   ^^^^^^^^^^^^^^^^^^
+lib/screens/login_screen.dart:366:31:
+Error: The method 'InputDecoration' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+                  decoration: InputDecoration(
+                              ^^^^^^^^^^^^^^^
+lib/screens/login_screen.dart:381:25:
+Error: The getter 'FocusScope' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+                        FocusScope.of(context).unfocus();
+                        ^^^^^^^^^^
+lib/screens/login_screen.dart:381:39:
+Error: The getter 'context' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+                        FocusScope.of(context).unfocus();
+                                      ^^^^^^^
+lib/screens/login_screen.dart:382:70:
+Error: The getter 'text' isn't defined for the type 'Object?'.
+ - 'Object' is from 'dart:core'.
+                        final fullOtp = _otpControllers.map((c) => c.text).join();
+                                                                     ^^^^
+lib/screens/login_screen.dart:359:24:
+Error: The method 'TextField' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+                child: TextField(
+                       ^^^^^^^^^
+lib/screens/login_screen.dart:356:22:
+Error: The method 'SizedBox' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+              return SizedBox(
+                     ^^^^^^^^
+lib/screens/login_screen.dart:353:11:
+Error: The method 'Row' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+          Row(
+          ^^^
+lib/screens/login_screen.dart:398:26:
+Error: The getter 'TextAlign' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+              textAlign: TextAlign.center,
+                         ^^^^^^^^^
+lib/screens/login_screen.dart:395:13:
+Error: The method 'Text' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+            Text(
+            ^^^^
+lib/screens/login_screen.dart:406:26:
+Error: The getter 'TextAlign' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+              textAlign: TextAlign.center,
+                         ^^^^^^^^^
+lib/screens/login_screen.dart:403:13:
+Error: The method 'Text' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+            Text(
+            ^^^^
+lib/screens/login_screen.dart:410:34:
+Error: The getter 'MainAxisAlignment' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+              mainAxisAlignment: MainAxisAlignment.center,
+                                 ^^^^^^^^^^^^^^^^^
+lib/screens/login_screen.dart:413:17:
+Error: The method 'GestureDetector' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+                GestureDetector(
+                ^^^^^^^^^^^^^^^
+lib/screens/login_screen.dart:409:13:
+Error: The method 'Row' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+            Row(
+            ^^^
+lib/screens/login_screen.dart:323:14:
+Error: The method 'Column' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+      child: Column(
+             ^^^^^^
+lib/screens/login_screen.dart:321:12:
+Error: The method 'Padding' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+    return Padding(
+           ^^^^^^^
+lib/screens/login_screen.dart:437:16:
+Error: 'BuildContext' isn't a type.
+  Widget build(BuildContext context) {
+               ^^^^^^^^^^^^
+lib/screens/login_screen.dart:446:24:
+Error: Not a constant expression.
+                color: Colors.white,
+                       ^^^^^^
+lib/screens/login_screen.dart:448:28:
+Error: Not a constant expression.
+                  topLeft: Radius.circular(24),
+                           ^^^^^^
+lib/screens/login_screen.dart:448:35:
+Error: Method invocation is not a constant expression.
+                  topLeft: Radius.circular(24),
+                                  ^^^^^^^^
+lib/screens/login_screen.dart:449:29:
+Error: Not a constant expression.
+                  topRight: Radius.circular(24),
+                            ^^^^^^
+lib/screens/login_screen.dart:449:36:
+Error: Method invocation is not a constant expression.
+                  topRight: Radius.circular(24),
+                                   ^^^^^^^^
+lib/screens/login_screen.dart:447:31:
+Error: Not a constant expression.
+                borderRadius: BorderRadius.only(
+                              ^^^^^^^^^^^^
+lib/screens/login_screen.dart:447:44:
+Error: Method invocation is not a constant expression.
+                borderRadius: BorderRadius.only(
+                                           ^^^^
+lib/screens/login_screen.dart:445:33:
+Error: Not a constant expression.
+              decoration: const BoxDecoration(
+                                ^^^^^^^^^^^^^
+lib/screens/login_screen.dart:439:24:
+Error: The getter 'Colors' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+      backgroundColor: Colors.white,
+                       ^^^^^^
+lib/screens/login_screen.dart:444:13:
+Error: The method 'Container' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+            Container(
+            ^^^^^^^^^
+lib/screens/login_screen.dart:441:16:
+Error: The method 'Column' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+        child: Column(
+               ^^^^^^
+lib/screens/login_screen.dart:440:13:
+Error: The method 'SingleChildScrollView' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+      body: SingleChildScrollView(
+            ^^^^^^^^^^^^^^^^^^^^^
+lib/screens/login_screen.dart:438:12:
+Error: The method 'Scaffold' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:connectthrive_flutter/screens/login_screen.dart' ('lib/screens/login_screen.dart').
+    return Scaffold(
+           ^^^^^^^^
+lib/screens/courses_screen.dart:24:11:
+Error: Superclass has no method named 'initState'.
+    super.initState();
+          ^^^^^^^^^
+lib/screens/courses_screen.dart:29:5:
+Error: The method 'setState' isn't defined for the type '_CoursesScreenState'.
+ - '_CoursesScreenState' is from 'package:connectthrive_flutter/screens/courses_screen.dart' ('lib/screens/courses_screen.dart').
+    setState(() {
+    ^^^^^^^^
+lib/screens/courses_screen.dart:38:9:
+Error: The method 'setState' isn't defined for the type '_CoursesScreenState'.
+ - '_CoursesScreenState' is from 'package:connectthrive_flutter/screens/courses_screen.dart' ('lib/screens/courses_screen.dart').
+        setState(() {
+        ^^^^^^^^
+lib/screens/courses_screen.dart:42:9:
+Error: The method 'setState' isn't defined for the type '_CoursesScreenState'.
+ - '_CoursesScreenState' is from 'package:connectthrive_flutter/screens/courses_screen.dart' ('lib/screens/courses_screen.dart').
+        setState(() {
+        ^^^^^^^^
+lib/screens/courses_screen.dart:47:7:
+Error: The method 'debugPrint' isn't defined for the type '_CoursesScreenState'.
+ - '_CoursesScreenState' is from 'package:connectthrive_flutter/screens/courses_screen.dart' ('lib/screens/courses_screen.dart').
+      debugPrint("Error fetching modules: $e");
+      ^^^^^^^^^^
+lib/screens/courses_screen.dart:48:7:
+Error: The method 'setState' isn't defined for the type '_CoursesScreenState'.
+ - '_CoursesScreenState' is from 'package:connectthrive_flutter/screens/courses_screen.dart' ('lib/screens/courses_screen.dart').
+      setState(() {
+      ^^^^^^^^
+lib/screens/courses_screen.dart:52:7:
+Error: The method 'setState' isn't defined for the type '_CoursesScreenState'.
+ - '_CoursesScreenState' is from 'package:connectthrive_flutter/screens/courses_screen.dart' ('lib/screens/courses_screen.dart').
+      setState(() {
+      ^^^^^^^^
+lib/screens/courses_screen.dart:81:35:
+Error: Not a constant expression.
+          const SnackBar(content: Text('Failed to request access. Please try again.')),
+                                  ^^^^
+lib/screens/courses_screen.dart:81:17:
+Error: Not a constant expression.
+          const SnackBar(content: Text('Failed to request access. Please try again.')),
+                ^^^^^^^^
+lib/screens/courses_screen.dart:59:5:
+Error: The method 'setState' isn't defined for the type '_CoursesScreenState'.
+ - '_CoursesScreenState' is from 'package:connectthrive_flutter/screens/courses_screen.dart' ('lib/screens/courses_screen.dart').
+    setState(() {
+    ^^^^^^^^
+lib/screens/courses_screen.dart:69:13:
+Error: The getter 'mounted' isn't defined for the type '_CoursesScreenState'.
+ - '_CoursesScreenState' is from 'package:connectthrive_flutter/screens/courses_screen.dart' ('lib/screens/courses_screen.dart').
+        if (mounted) {
+            ^^^^^^^
+lib/screens/courses_screen.dart:70:11:
+Error: The getter 'ScaffoldMessenger' isn't defined for the type '_CoursesScreenState'.
+ - '_CoursesScreenState' is from 'package:connectthrive_flutter/screens/courses_screen.dart' ('lib/screens/courses_screen.dart').
+          ScaffoldMessenger.of(context).showSnackBar(
+          ^^^^^^^^^^^^^^^^^
+lib/screens/courses_screen.dart:70:32:
+Error: The getter 'context' isn't defined for the type '_CoursesScreenState'.
+ - '_CoursesScreenState' is from 'package:connectthrive_flutter/screens/courses_screen.dart' ('lib/screens/courses_screen.dart').
+          ScaffoldMessenger.of(context).showSnackBar(
+                               ^^^^^^^
+lib/screens/courses_screen.dart:71:31:
+Error: The method 'Text' isn't defined for the type '_CoursesScreenState'.
+ - '_CoursesScreenState' is from 'package:connectthrive_flutter/screens/courses_screen.dart' ('lib/screens/courses_screen.dart').
+            SnackBar(content: Text(data['message'] ?? 'Access request sent successfully')),
+                              ^^^^
+lib/screens/courses_screen.dart:71:13:
+Error: The method 'SnackBar' isn't defined for the type '_CoursesScreenState'.
+ - '_CoursesScreenState' is from 'package:connectthrive_flutter/screens/courses_screen.dart' ('lib/screens/courses_screen.dart').
+            SnackBar(content: Text(data['message'] ?? 'Access request sent successfully')),
+            ^^^^^^^^
+lib/screens/courses_screen.dart:78:7:
+Error: The method 'debugPrint' isn't defined for the type '_CoursesScreenState'.
+ - '_CoursesScreenState' is from 'package:connectthrive_flutter/screens/courses_screen.dart' ('lib/screens/courses_screen.dart').
+      debugPrint("Error requesting access: $e");
+      ^^^^^^^^^^
+lib/screens/courses_screen.dart:79:11:
+Error: The getter 'mounted' isn't defined for the type '_CoursesScreenState'.
+ - '_CoursesScreenState' is from 'package:connectthrive_flutter/screens/courses_screen.dart' ('lib/screens/courses_screen.dart').
+      if (mounted) {
+          ^^^^^^^
+lib/screens/courses_screen.dart:80:9:
+Error: The getter 'ScaffoldMessenger' isn't defined for the type '_CoursesScreenState'.
+ - '_CoursesScreenState' is from 'package:connectthrive_flutter/screens/courses_screen.dart' ('lib/screens/courses_screen.dart').
+        ScaffoldMessenger.of(context).showSnackBar(
+        ^^^^^^^^^^^^^^^^^
+lib/screens/courses_screen.dart:80:30:
+Error: The getter 'context' isn't defined for the type '_CoursesScreenState'.
+ - '_CoursesScreenState' is from 'package:connectthrive_flutter/screens/courses_screen.dart' ('lib/screens/courses_screen.dart').
+        ScaffoldMessenger.of(context).showSnackBar(
+                             ^^^^^^^
+lib/screens/courses_screen.dart:85:7:
+Error: The method 'setState' isn't defined for the type '_CoursesScreenState'.
+ - '_CoursesScreenState' is from 'package:connectthrive_flutter/screens/courses_screen.dart' ('lib/screens/courses_screen.dart').
+      setState(() {
+      ^^^^^^^^
+lib/screens/courses_screen.dart:93:22:
+Error: Couldn't find constructor 'EdgeInsets.all'.
+      padding: const EdgeInsets.all(16),
+                     ^^^^^^^^^^
+lib/screens/courses_screen.dart:94:21:
+Error: Couldn't find constructor 'EdgeInsets.only'.
+      margin: const EdgeInsets.only(bottom: 16),
+                    ^^^^^^^^^^
+lib/screens/courses_screen.dart:102:27:
+Error: Not a constant expression.
+            offset: const Offset(0, 4),
+                          ^^^^^^
+lib/screens/courses_screen.dart:113:27:
+Error: Not a constant expression.
+              fontWeight: FontWeight.bold,
+                          ^^^^^^^^^^
+lib/screens/courses_screen.dart:114:22:
+Error: Not a constant expression.
+              color: Color(0xFF225663),
+                     ^^^^^
+lib/screens/courses_screen.dart:111:20:
+Error: Not a constant expression.
+            style: TextStyle(
+                   ^^^^^^^^^
+lib/screens/courses_screen.dart:109:17:
+Error: Not a constant expression.
+          const Text(
+                ^^^^
+lib/screens/courses_screen.dart:117:17:
+Error: Not a constant expression.
+          const SizedBox(height: 8),
+                ^^^^^^^^
+lib/screens/courses_screen.dart:96:16:
+Error: The getter 'Colors' isn't defined for the type '_CoursesScreenState'.
+ - '_CoursesScreenState' is from 'package:connectthrive_flutter/screens/courses_screen.dart' ('lib/screens/courses_screen.dart').
+        color: Colors.white,
+               ^^^^^^
+lib/screens/courses_screen.dart:97:23:
+Error: The getter 'BorderRadius' isn't defined for the type '_CoursesScreenState'.
+ - '_CoursesScreenState' is from 'package:connectthrive_flutter/screens/courses_screen.dart' ('lib/screens/courses_screen.dart').
+        borderRadius: BorderRadius.circular(12),
+                      ^^^^^^^^^^^^
+lib/screens/courses_screen.dart:100:20:
+Error: The getter 'Colors' isn't defined for the type '_CoursesScreenState'.
+ - '_CoursesScreenState' is from 'package:connectthrive_flutter/screens/courses_screen.dart' ('lib/screens/courses_screen.dart').
+            color: Colors.black.withOpacity(0.05),
+                   ^^^^^^
+lib/screens/courses_screen.dart:99:11:
+Error: The method 'BoxShadow' isn't defined for the type '_CoursesScreenState'.
+ - '_CoursesScreenState' is from 'package:connectthrive_flutter/screens/courses_screen.dart' ('lib/screens/courses_screen.dart').
+          BoxShadow(
+          ^^^^^^^^^
+lib/screens/courses_screen.dart:95:19:
+Error: The method 'BoxDecoration' isn't defined for the type '_CoursesScreenState'.
+ - '_CoursesScreenState' is from 'package:connectthrive_flutter/screens/courses_screen.dart' ('lib/screens/courses_screen.dart').
+      decoration: BoxDecoration(
+                  ^^^^^^^^^^^^^
+lib/screens/courses_screen.dart:107:29:
+Error: The getter 'CrossAxisAlignment' isn't defined for the type '_CoursesScreenState'.
+ - '_CoursesScreenState' is from 'package:connectthrive_flutter/screens/courses_screen.dart' ('lib/screens/courses_screen.dart').
+        crossAxisAlignment: CrossAxisAlignment.start,
+                            ^^^^^^^^^^^^^^^^^^
+lib/screens/courses_screen.dart:123:22:
+Error: The getter 'Colors' isn't defined for the type '_CoursesScreenState'.
+ - '_CoursesScreenState' is from 'package:connectthrive_flutter/screens/courses_screen.dart' ('lib/screens/courses_screen.dart').
+              color: Colors.grey[700],
+                     ^^^^^^
+lib/screens/courses_screen.dart:121:20:
+Error: The method 'TextStyle' isn't defined for the type '_CoursesScreenState'.
+ - '_CoursesScreenState' is from 'package:connectthrive_flutter/screens/courses_screen.dart' ('lib/screens/courses_screen.dart').
+            style: TextStyle(
+                   ^^^^^^^^^
+lib/screens/courses_screen.dart:118:11:
+Error: The method 'Text' isn't defined for the type '_CoursesScreenState'.
+ - '_CoursesScreenState' is from 'package:connectthrive_flutter/screens/courses_screen.dart' ('lib/screens/courses_screen.dart').
+          Text(
+          ^^^^
+lib/screens/courses_screen.dart:106:14:
+Error: The method 'Column' isn't defined for the type '_CoursesScreenState'.
+ - '_CoursesScreenState' is from 'package:connectthrive_flutter/screens/courses_screen.dart' ('lib/screens/courses_screen.dart').
+      child: Column(
+             ^^^^^^
+lib/screens/courses_screen.dart:92:12:
+Error: The method 'Container' isn't defined for the type '_CoursesScreenState'.
+ - '_CoursesScreenState' is from 'package:connectthrive_flutter/screens/courses_screen.dart' ('lib/screens/courses_screen.dart').
+    return Container(
+           ^^^^^^^^^
+lib/screens/courses_screen.dart:145:37:
+Error: Not a constant expression.
+            const SnackBar(content: Text('This module is locked. Please request access.')),
+                                    ^^^^
+lib/screens/courses_screen.dart:145:19:
+Error: Not a constant expression.
+            const SnackBar(content: Text('This module is locked. Please request access.')),
+                  ^^^^^^^^
+lib/screens/courses_screen.dart:150:24:
+Error: Couldn't find constructor 'EdgeInsets.symmetric'.
+        padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
+                       ^^^^^^^^^^
+lib/screens/courses_screen.dart:151:23:
+Error: Couldn't find constructor 'EdgeInsets.symmetric'.
+        margin: const EdgeInsets.symmetric(vertical: 4),
+                      ^^^^^^^^^^
+lib/screens/courses_screen.dart:172:41:
+Error: Not a constant expression.
+                      child: const Icon(Icons.video_library_outlined, color: Colors.grey),
+                                        ^^^^^
+lib/screens/courses_screen.dart:172:78:
+Error: Not a constant expression.
+                      child: const Icon(Icons.video_library_outlined, color: Colors.grey),
+                                                                             ^^^^^^
+lib/screens/courses_screen.dart:172:36:
+Error: Not a constant expression.
+                      child: const Icon(Icons.video_library_outlined, color: Colors.grey),
+                                   ^^^^
+lib/screens/courses_screen.dart:178:36:
+Error: Couldn't find constructor 'EdgeInsets.all'.
+                    padding: const EdgeInsets.all(4),
+                                   ^^^^^^^^^^
+lib/screens/courses_screen.dart:184:23:
+Error: Not a constant expression.
+                      Icons.play_arrow,
+                      ^^^^^
+lib/screens/courses_screen.dart:186:30:
+Error: Not a constant expression.
+                      color: Colors.white,
+                             ^^^^^^
+lib/screens/courses_screen.dart:183:34:
+Error: Not a constant expression.
+                    child: const Icon(
+                                 ^^^^
+lib/screens/courses_screen.dart:191:19:
+Error: Not a constant expression.
+            const SizedBox(width: 12),
+                  ^^^^^^^^
+lib/screens/courses_screen.dart:153:18:
+Error: The getter 'Colors' isn't defined for the type '_CoursesScreenState'.
+ - '_CoursesScreenState' is from 'package:connectthrive_flutter/screens/courses_screen.dart' ('lib/screens/courses_screen.dart').
+          color: Colors.grey[50],
+                 ^^^^^^
+lib/screens/courses_screen.dart:154:25:
+Error: The getter 'BorderRadius' isn't defined for the type '_CoursesScreenState'.
+ - '_CoursesScreenState' is from 'package:connectthrive_flutter/screens/courses_screen.dart' ('lib/screens/courses_screen.dart').
+          borderRadius: BorderRadius.circular(8),
+                        ^^^^^^^^^^^^
+lib/screens/courses_screen.dart:152:21:
+Error: The method 'BoxDecoration' isn't defined for the type '_CoursesScreenState'.
+ - '_CoursesScreenState' is from 'package:connectthrive_flutter/screens/courses_screen.dart' ('lib/screens/courses_screen.dart').
+        decoration: BoxDecoration(
+                    ^^^^^^^^^^^^^
+lib/screens/courses_screen.dart:159:26:
+Error: The getter 'Alignment' isn't defined for the type '_CoursesScreenState'.
+ - '_CoursesScreenState' is from 'package:connectthrive_flutter/screens/courses_screen.dart' ('lib/screens/courses_screen.dart').
+              alignment: Alignment.center,
+                         ^^^^^^^^^
+lib/screens/courses_screen.dart:162:33:
+Error: The getter 'BorderRadius' isn't defined for the type '_CoursesScreenState'.
+ - '_CoursesScreenState' is from 'package:connectthrive_flutter/screens/courses_screen.dart' ('lib/screens/courses_screen.dart').
+                  borderRadius: BorderRadius.circular(6),
+                                ^^^^^^^^^^^^
+lib/screens/courses_screen.dart:163:26:
+Error: The getter 'Image' isn't defined for the type '_CoursesScreenState'.
+ - '_CoursesScreenState' is from 'package:connectthrive_flutter/screens/courses_screen.dart' ('lib/screens/courses_screen.dart').
+                  child: Image.network(
+                         ^^^^^
+lib/screens/courses_screen.dart:167:26:
+Error: The getter 'BoxFit' isn't defined for the type '_CoursesScreenState'.
+ - '_CoursesScreenState' is from 'package:connectthrive_flutter/screens/courses_screen.dart' ('lib/screens/courses_screen.dart').
+                    fit: BoxFit.cover,
+                         ^^^^^^
+lib/screens/courses_screen.dart:171:30:
+Error: The getter 'Colors' isn't defined for the type '_CoursesScreenState'.
+ - '_CoursesScreenState' is from 'package:connectthrive_flutter/screens/courses_screen.dart' ('lib/screens/courses_screen.dart').
+                      color: Colors.grey[300],
+                             ^^^^^^
+lib/screens/courses_screen.dart:168:67:
+Error: The method 'Container' isn't defined for the type '_CoursesScreenState'.
+ - '_CoursesScreenState' is from 'package:connectthrive_flutter/screens/courses_screen.dart' ('lib/screens/courses_screen.dart').
+                    errorBuilder: (context, error, stackTrace) => Container(
+                                                                  ^^^^^^^^^
+lib/screens/courses_screen.dart:161:17:
+Error: The method 'ClipRRect' isn't defined for the type '_CoursesScreenState'.
+ - '_CoursesScreenState' is from 'package:connectthrive_flutter/screens/courses_screen.dart' ('lib/screens/courses_screen.dart').
+                ClipRRect(
+                ^^^^^^^^^
+lib/screens/courses_screen.dart:180:30:
+Error: The getter 'Colors' isn't defined for the type '_CoursesScreenState'.
+ - '_CoursesScreenState' is from 'package:connectthrive_flutter/screens/courses_screen.dart' ('lib/screens/courses_screen.dart').
+                      color: Colors.black.withOpacity(0.4),
+                             ^^^^^^
+lib/screens/courses_screen.dart:181:30:
+Error: The getter 'BoxShape' isn't defined for the type '_CoursesScreenState'.
+ - '_CoursesScreenState' is from 'package:connectthrive_flutter/screens/courses_screen.dart' ('lib/screens/courses_screen.dart').
+                      shape: BoxShape.circle,
+                             ^^^^^^^^
+lib/screens/courses_screen.dart:179:33:
+Error: The method 'BoxDecoration' isn't defined for the type '_CoursesScreenState'.
+ - '_CoursesScreenState' is from 'package:connectthrive_flutter/screens/courses_screen.dart' ('lib/screens/courses_screen.dart').
+                    decoration: BoxDecoration(
+                                ^^^^^^^^^^^^^
+lib/screens/courses_screen.dart:177:19:
+Error: The method 'Container' isn't defined for the type '_CoursesScreenState'.
+ - '_CoursesScreenState' is from 'package:connectthrive_flutter/screens/courses_screen.dart' ('lib/screens/courses_screen.dart').
+                  Container(
+                  ^^^^^^^^^
+lib/screens/courses_screen.dart:158:13:
+Error: The method 'Stack' isn't defined for the type '_CoursesScreenState'.
+ - '_CoursesScreenState' is from 'package:connectthrive_flutter/screens/courses_screen.dart' ('lib/screens/courses_screen.dart').
+            Stack(
+            ^^^^^
+lib/screens/courses_screen.dart:197:31:
+Error: The getter 'FontWeight' isn't defined for the type '_CoursesScreenState'.
+ - '_CoursesScreenState' is from 'package:connectthrive_flutter/screens/courses_screen.dart' ('lib/screens/courses_screen.dart').
+                  fontWeight: FontWeight.w600,
+                              ^^^^^^^^^^
+lib/screens/courses_screen.dart:198:46:
+Error: The getter 'Colors' isn't defined for the type '_CoursesScreenState'.
+ - '_CoursesScreenState' is from 'package:connectthrive_flutter/screens/courses_screen.dart' ('lib/screens/courses_screen.dart').
+                  color: module.accessible ? Colors.black87 : Colors.grey[600],
+                                             ^^^^^^
+lib/screens/courses_screen.dart:198:63:
+Error: The getter 'Colors' isn't defined for the type '_CoursesScreenState'.
+ - '_CoursesScreenState' is from 'package:connectthrive_flutter/screens/courses_screen.dart' ('lib/screens/courses_screen.dart').
+                  color: module.accessible ? Colors.black87 : Colors.grey[600],
+                                                              ^^^^^^
+lib/screens/courses_screen.dart:195:24:
+Error: The method 'TextStyle' isn't defined for the type '_CoursesScreenState'.
+ - '_CoursesScreenState' is from 'package:connectthrive_flutter/screens/courses_screen.dart' ('lib/screens/courses_screen.dart').
+                style: TextStyle(
+                       ^^^^^^^^^
+lib/screens/courses_screen.dart:193:22:
+Error: The method 'Text' isn't defined for the type '_CoursesScreenState'.
+ - '_CoursesScreenState' is from 'package:connectthrive_flutter/screens/courses_screen.dart' ('lib/screens/courses_screen.dart').
+              child: Text(
+                     ^^^^
+lib/screens/courses_screen.dart:192:13:
+Error: The method 'Expanded' isn't defined for the type '_CoursesScreenState'.
+ - '_CoursesScreenState' is from 'package:connectthrive_flutter/screens/courses_screen.dart' ('lib/screens/courses_screen.dart').
+            Expanded(
+            ^^^^^^^^
+lib/screens/courses_screen.dart:156:16:
+Error: The method 'Row' isn't defined for the type '_CoursesScreenState'.
+ - '_CoursesScreenState' is from 'package:connectthrive_flutter/screens/courses_screen.dart' ('lib/screens/courses_screen.dart').
+        child: Row(
+               ^^^
+lib/screens/courses_screen.dart:149:14:
+Error: The method 'Container' isn't defined for the type '_CoursesScreenState'.
+ - '_CoursesScreenState' is from 'package:connectthrive_flutter/screens/courses_screen.dart' ('lib/screens/courses_screen.dart').
+      child: Container(
+             ^^^^^^^^^
+lib/screens/courses_screen.dart:138:11:
+Error: The getter 'Navigator' isn't defined for the type '_CoursesScreenState'.
+ - '_CoursesScreenState' is from 'package:connectthrive_flutter/screens/courses_screen.dart' ('lib/screens/courses_screen.dart').
+          Navigator.of(context).push(
+          ^^^^^^^^^
+lib/screens/courses_screen.dart:138:24:
+Error: The getter 'context' isn't defined for the type '_CoursesScreenState'.
+ - '_CoursesScreenState' is from 'package:connectthrive_flutter/screens/courses_screen.dart' ('lib/screens/courses_screen.dart').
+          Navigator.of(context).push(
+                       ^^^^^^^
+lib/screens/courses_screen.dart:139:13:
+Error: The method 'MaterialPageRoute' isn't defined for the type '_CoursesScreenState'.
+ - '_CoursesScreenState' is from 'package:connectthrive_flutter/screens/courses_screen.dart' ('lib/screens/courses_screen.dart').
+            MaterialPageRoute(
+            ^^^^^^^^^^^^^^^^^
+lib/screens/courses_screen.dart:144:11:
+Error: The getter 'ScaffoldMessenger' isn't defined for the type '_CoursesScreenState'.
+ - '_CoursesScreenState' is from 'package:connectthrive_flutter/screens/courses_screen.dart' ('lib/screens/courses_screen.dart').
+          ScaffoldMessenger.of(context).showSnackBar(
+          ^^^^^^^^^^^^^^^^^
+lib/screens/courses_screen.dart:144:32:
+Error: The getter 'context' isn't defined for the type '_CoursesScreenState'.
+ - '_CoursesScreenState' is from 'package:connectthrive_flutter/screens/courses_screen.dart' ('lib/screens/courses_screen.dart').
+          ScaffoldMessenger.of(context).showSnackBar(
+                               ^^^^^^^
+lib/screens/courses_screen.dart:135:12:
+Error: The method 'InkWell' isn't defined for the type '_CoursesScreenState'.
+ - '_CoursesScreenState' is from 'package:connectthrive_flutter/screens/courses_screen.dart' ('lib/screens/courses_screen.dart').
+    return InkWell(
+           ^^^^^^^
+lib/screens/courses_screen.dart:212:21:
+Error: Couldn't find constructor 'EdgeInsets.only'.
+      margin: const EdgeInsets.only(bottom: 12),
+                    ^^^^^^^^^^
+lib/screens/courses_screen.dart:221:55:
+Error: Not a constant expression.
+      color: module.accessible ? Colors.white : const Color(0xFFF9F9F9),
+                                                      ^^^^^
+lib/screens/courses_screen.dart:234:50:
+Error: Not a constant expression.
+                color: module.accessible ? const Color(0xFF225663) : Colors.black54,
+                                                 ^^^^^
+lib/screens/courses_screen.dart:245:83:
+Error: Not a constant expression.
+                          child: CircularProgressIndicator(strokeWidth: 2, color: Colors.grey),
+                                                                                  ^^^^^^
+lib/screens/courses_screen.dart:245:34:
+Error: Not a constant expression.
+                          child: CircularProgressIndicator(strokeWidth: 2, color: Colors.grey),
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^
+lib/screens/courses_screen.dart:242:31:
+Error: Not a constant expression.
+                      ? const SizedBox(
+                              ^^^^^^^^
+lib/screens/courses_screen.dart:248:44:
+Error: Not a constant expression.
+                          icon: const Icon(Icons.lock_outline, color: Colors.redAccent),
+                                           ^^^^^
+lib/screens/courses_screen.dart:248:71:
+Error: Not a constant expression.
+                          icon: const Icon(Icons.lock_outline, color: Colors.redAccent),
+                                                                      ^^^^^^
+lib/screens/courses_screen.dart:248:39:
+Error: Not a constant expression.
+                          icon: const Icon(Icons.lock_outline, color: Colors.redAccent),
+                                      ^^^^
+lib/screens/courses_screen.dart:254:32:
+Error: Not a constant expression.
+                  color: const Color(0xFF225663),
+                               ^^^^^
+lib/screens/courses_screen.dart:261:30:
+Error: Couldn't find constructor 'EdgeInsets.symmetric'.
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                             ^^^^^^^^^^
+lib/screens/courses_screen.dart:267:32:
+Error: Not a constant expression.
+                      padding: EdgeInsets.symmetric(vertical: 6),
+                               ^^^^^^^^^^
+lib/screens/courses_screen.dart:267:43:
+Error: Method invocation is not a constant expression.
+                      padding: EdgeInsets.symmetric(vertical: 6),
+                                          ^^^^^^^^^
+lib/screens/courses_screen.dart:270:54:
+Error: Not a constant expression.
+                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13, color: Colors.blueGrey),
+                                                     ^^^^^^^^^^
+lib/screens/courses_screen.dart:270:92:
+Error: Not a constant expression.
+                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13, color: Colors.blueGrey),
+                                                                                          ^^^^^^
+lib/screens/courses_screen.dart:270:32:
+Error: Not a constant expression.
+                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13, color: Colors.blueGrey),
+                               ^^^^^^^^^
+lib/screens/courses_screen.dart:268:30:
+Error: Not a constant expression.
+                      child: Text(
+                             ^^^^
+lib/screens/courses_screen.dart:266:27:
+Error: Not a constant expression.
+                    const Padding(
+                          ^^^^^^^
+lib/screens/courses_screen.dart:277:32:
+Error: Not a constant expression.
+                      padding: EdgeInsets.symmetric(vertical: 6),
+                               ^^^^^^^^^^
+lib/screens/courses_screen.dart:277:43:
+Error: Method invocation is not a constant expression.
+                      padding: EdgeInsets.symmetric(vertical: 6),
+                                          ^^^^^^^^^
+lib/screens/courses_screen.dart:280:54:
+Error: Not a constant expression.
+                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13, color: Colors.blueGrey),
+                                                     ^^^^^^^^^^
+lib/screens/courses_screen.dart:280:92:
+Error: Not a constant expression.
+                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13, color: Colors.blueGrey),
+                                                                                          ^^^^^^
+lib/screens/courses_screen.dart:280:32:
+Error: Not a constant expression.
+                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13, color: Colors.blueGrey),
+                               ^^^^^^^^^
+lib/screens/courses_screen.dart:278:30:
+Error: Not a constant expression.
+                      child: Text(
+                             ^^^^
+lib/screens/courses_screen.dart:276:27:
+Error: Not a constant expression.
+                    const Padding(
+                          ^^^^^^^
+lib/screens/courses_screen.dart:287:32:
+Error: Not a constant expression.
+                      padding: EdgeInsets.symmetric(vertical: 8),
+                               ^^^^^^^^^^
+lib/screens/courses_screen.dart:287:43:
+Error: Method invocation is not a constant expression.
+                      padding: EdgeInsets.symmetric(vertical: 8),
+                                          ^^^^^^^^^
+lib/screens/courses_screen.dart:290:53:
+Error: Not a constant expression.
+                        style: TextStyle(fontStyle: FontStyle.italic, color: Colors.grey),
+                                                    ^^^^^^^^^
+lib/screens/courses_screen.dart:290:78:
+Error: Not a constant expression.
+                        style: TextStyle(fontStyle: FontStyle.italic, color: Colors.grey),
+                                                                             ^^^^^^
+lib/screens/courses_screen.dart:290:32:
+Error: Not a constant expression.
+                        style: TextStyle(fontStyle: FontStyle.italic, color: Colors.grey),
+                               ^^^^^^^^^
+lib/screens/courses_screen.dart:288:30:
+Error: Not a constant expression.
+                      child: Text(
+                             ^^^^
+lib/screens/courses_screen.dart:286:27:
+Error: Not a constant expression.
+                    const Padding(
+                          ^^^^^^^
+lib/screens/courses_screen.dart:215:23:
+Error: The getter 'BorderRadius' isn't defined for the type '_CoursesScreenState'.
+ - '_CoursesScreenState' is from 'package:connectthrive_flutter/screens/courses_screen.dart' ('lib/screens/courses_screen.dart').
+        borderRadius: BorderRadius.circular(12),
+                      ^^^^^^^^^^^^
+lib/screens/courses_screen.dart:217:38:
+Error: The getter 'Colors' isn't defined for the type '_CoursesScreenState'.
+ - '_CoursesScreenState' is from 'package:connectthrive_flutter/screens/courses_screen.dart' ('lib/screens/courses_screen.dart').
+          color: module.accessible ? Colors.grey[200]! : Colors.red[100]!,
+                                     ^^^^^^
+lib/screens/courses_screen.dart:217:58:
+Error: The getter 'Colors' isn't defined for the type '_CoursesScreenState'.
+ - '_CoursesScreenState' is from 'package:connectthrive_flutter/screens/courses_screen.dart' ('lib/screens/courses_screen.dart').
+          color: module.accessible ? Colors.grey[200]! : Colors.red[100]!,
+                                                         ^^^^^^
+lib/screens/courses_screen.dart:216:15:
+Error: The method 'BorderSide' isn't defined for the type '_CoursesScreenState'.
+ - '_CoursesScreenState' is from 'package:connectthrive_flutter/screens/courses_screen.dart' ('lib/screens/courses_screen.dart').
+        side: BorderSide(
+              ^^^^^^^^^^
+lib/screens/courses_screen.dart:214:14:
+Error: The method 'RoundedRectangleBorder' isn't defined for the type '_CoursesScreenState'.
+ - '_CoursesScreenState' is from 'package:connectthrive_flutter/screens/courses_screen.dart' ('lib/screens/courses_screen.dart').
+      shape: RoundedRectangleBorder(
+             ^^^^^^^^^^^^^^^^^^^^^^
+lib/screens/courses_screen.dart:221:34:
+Error: The getter 'Colors' isn't defined for the type '_CoursesScreenState'.
+ - '_CoursesScreenState' is from 'package:connectthrive_flutter/screens/courses_screen.dart' ('lib/screens/courses_screen.dart').
+      color: module.accessible ? Colors.white : const Color(0xFFF9F9F9),
+                                 ^^^^^^
+lib/screens/courses_screen.dart:233:29:
+Error: The getter 'FontWeight' isn't defined for the type '_CoursesScreenState'.
+ - '_CoursesScreenState' is from 'package:connectthrive_flutter/screens/courses_screen.dart' ('lib/screens/courses_screen.dart').
+                fontWeight: FontWeight.bold,
+                            ^^^^^^^^^^
+lib/screens/courses_screen.dart:234:70:
+Error: The getter 'Colors' isn't defined for the type '_CoursesScreenState'.
+ - '_CoursesScreenState' is from 'package:connectthrive_flutter/screens/courses_screen.dart' ('lib/screens/courses_screen.dart').
+                color: module.accessible ? const Color(0xFF225663) : Colors.black54,
+                                                                     ^^^^^^
+lib/screens/courses_screen.dart:232:22:
+Error: The method 'TextStyle' isn't defined for the type '_CoursesScreenState'.
+ - '_CoursesScreenState' is from 'package:connectthrive_flutter/screens/courses_screen.dart' ('lib/screens/courses_screen.dart').
+              style: TextStyle(
+                     ^^^^^^^^^
+lib/screens/courses_screen.dart:230:20:
+Error: The method 'Text' isn't defined for the type '_CoursesScreenState'.
+ - '_CoursesScreenState' is from 'package:connectthrive_flutter/screens/courses_screen.dart' ('lib/screens/courses_screen.dart').
+            title: Text(
+                   ^^^^
+lib/screens/courses_screen.dart:238:29:
+Error: The getter 'MainAxisSize' isn't defined for the type '_CoursesScreenState'.
+ - '_CoursesScreenState' is from 'package:connectthrive_flutter/screens/courses_screen.dart' ('lib/screens/courses_screen.dart').
+              mainAxisSize: MainAxisSize.min,
+                            ^^^^^^^^^^^^
+lib/screens/courses_screen.dart:247:25:
+Error: The method 'IconButton' isn't defined for the type '_CoursesScreenState'.
+ - '_CoursesScreenState' is from 'package:connectthrive_flutter/screens/courses_screen.dart' ('lib/screens/courses_screen.dart').
+                      : IconButton(
+                        ^^^^^^^^^^
+lib/screens/courses_screen.dart:253:32:
+Error: The getter 'Icons' isn't defined for the type '_CoursesScreenState'.
+ - '_CoursesScreenState' is from 'package:connectthrive_flutter/screens/courses_screen.dart' ('lib/screens/courses_screen.dart').
+                  isExpanded ? Icons.keyboard_arrow_up : Icons.keyboard_arrow_down,
+                               ^^^^^
+lib/screens/courses_screen.dart:253:58:
+Error: The getter 'Icons' isn't defined for the type '_CoursesScreenState'.
+ - '_CoursesScreenState' is from 'package:connectthrive_flutter/screens/courses_screen.dart' ('lib/screens/courses_screen.dart').
+                  isExpanded ? Icons.keyboard_arrow_up : Icons.keyboard_arrow_down,
+                                                         ^^^^^
+lib/screens/courses_screen.dart:252:17:
+Error: The method 'Icon' isn't defined for the type '_CoursesScreenState'.
+ - '_CoursesScreenState' is from 'package:connectthrive_flutter/screens/courses_screen.dart' ('lib/screens/courses_screen.dart').
+                Icon(
+                ^^^^
+lib/screens/courses_screen.dart:237:23:
+Error: The method 'Row' isn't defined for the type '_CoursesScreenState'.
+ - '_CoursesScreenState' is from 'package:connectthrive_flutter/screens/courses_screen.dart' ('lib/screens/courses_screen.dart').
+            trailing: Row(
+                      ^^^
+lib/screens/courses_screen.dart:226:15:
+Error: The method 'setState' isn't defined for the type '_CoursesScreenState'.
+ - '_CoursesScreenState' is from 'package:connectthrive_flutter/screens/courses_screen.dart' ('lib/screens/courses_screen.dart').
+              setState(() {
+              ^^^^^^^^
+lib/screens/courses_screen.dart:224:11:
+Error: The method 'ListTile' isn't defined for the type '_CoursesScreenState'.
+ - '_CoursesScreenState' is from 'package:connectthrive_flutter/screens/courses_screen.dart' ('lib/screens/courses_screen.dart').
+          ListTile(
+          ^^^^^^^^
+lib/screens/courses_screen.dart:263:37:
+Error: The getter 'CrossAxisAlignment' isn't defined for the type '_CoursesScreenState'.
+ - '_CoursesScreenState' is from 'package:connectthrive_flutter/screens/courses_screen.dart' ('lib/screens/courses_screen.dart').
+                crossAxisAlignment: CrossAxisAlignment.start,
+                                    ^^^^^^^^^^^^^^^^^^
+lib/screens/courses_screen.dart:262:22:
+Error: The method 'Column' isn't defined for the type '_CoursesScreenState'.
+ - '_CoursesScreenState' is from 'package:connectthrive_flutter/screens/courses_screen.dart' ('lib/screens/courses_screen.dart').
+              child: Column(
+                     ^^^^^^
+lib/screens/courses_screen.dart:260:13:
+Error: The method 'Padding' isn't defined for the type '_CoursesScreenState'.
+ - '_CoursesScreenState' is from 'package:connectthrive_flutter/screens/courses_screen.dart' ('lib/screens/courses_screen.dart').
+            Padding(
+            ^^^^^^^
+lib/screens/courses_screen.dart:222:14:
+Error: The method 'Column' isn't defined for the type '_CoursesScreenState'.
+ - '_CoursesScreenState' is from 'package:connectthrive_flutter/screens/courses_screen.dart' ('lib/screens/courses_screen.dart').
+      child: Column(
+             ^^^^^^
+lib/screens/courses_screen.dart:211:12:
+Error: The method 'Card' isn't defined for the type '_CoursesScreenState'.
+ - '_CoursesScreenState' is from 'package:connectthrive_flutter/screens/courses_screen.dart' ('lib/screens/courses_screen.dart').
+    return Card(
+           ^^^^
+lib/screens/courses_screen.dart:302:16:
+Error: 'BuildContext' isn't a type.
+  Widget build(BuildContext context) {
+               ^^^^^^^^^^^^
+lib/screens/courses_screen.dart:304:30:
+Error: Not a constant expression.
+      backgroundColor: const Color(0xFFF1F4F9),
+                             ^^^^^
+lib/screens/courses_screen.dart:306:22:
+Error: Not a constant expression.
+        title: const Text("Oracle Fusion Financials"),
+                     ^^^^
+lib/screens/courses_screen.dart:307:32:
+Error: Not a constant expression.
+        backgroundColor: const Color(0xFF225663),
+                               ^^^^^
+lib/screens/courses_screen.dart:311:30:
+Error: Not a constant expression.
+            icon: const Icon(Icons.logout),
+                             ^^^^^
+lib/screens/courses_screen.dart:311:25:
+Error: Not a constant expression.
+            icon: const Icon(Icons.logout),
+                        ^^^^
+lib/screens/courses_screen.dart:321:55:
+Error: Not a constant expression.
+              child: CircularProgressIndicator(color: Color(0xFF225663)),
+                                                      ^^^^^
+lib/screens/courses_screen.dart:321:22:
+Error: Not a constant expression.
+              child: CircularProgressIndicator(color: Color(0xFF225663)),
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^
+lib/screens/courses_screen.dart:320:19:
+Error: Not a constant expression.
+          ? const Center(
+                  ^^^^^^
+lib/screens/courses_screen.dart:324:28:
+Error: Not a constant expression.
+              color: const Color(0xFF225663),
+                           ^^^^^
+lib/screens/courses_screen.dart:327:32:
+Error: Couldn't find constructor 'EdgeInsets.all'.
+                padding: const EdgeInsets.all(16),
+                               ^^^^^^^^^^
+lib/screens/courses_screen.dart:308:26:
+Error: The getter 'Colors' isn't defined for the type '_CoursesScreenState'.
+ - '_CoursesScreenState' is from 'package:connectthrive_flutter/screens/courses_screen.dart' ('lib/screens/courses_screen.dart').
+        foregroundColor: Colors.white,
+                         ^^^^^^
+lib/screens/courses_screen.dart:314:15:
+Error: The getter 'Navigator' isn't defined for the type '_CoursesScreenState'.
+ - '_CoursesScreenState' is from 'package:connectthrive_flutter/screens/courses_screen.dart' ('lib/screens/courses_screen.dart').
+              Navigator.of(context).pushReplacementNamed('/login');
+              ^^^^^^^^^
+lib/screens/courses_screen.dart:310:11:
+Error: The method 'IconButton' isn't defined for the type '_CoursesScreenState'.
+ - '_CoursesScreenState' is from 'package:connectthrive_flutter/screens/courses_screen.dart' ('lib/screens/courses_screen.dart').
+          IconButton(
+          ^^^^^^^^^^
+lib/screens/courses_screen.dart:305:15:
+Error: The method 'AppBar' isn't defined for the type '_CoursesScreenState'.
+ - '_CoursesScreenState' is from 'package:connectthrive_flutter/screens/courses_screen.dart' ('lib/screens/courses_screen.dart').
+      appBar: AppBar(
+              ^^^^^^
+lib/screens/courses_screen.dart:326:22:
+Error: The method 'ListView' isn't defined for the type '_CoursesScreenState'.
+ - '_CoursesScreenState' is from 'package:connectthrive_flutter/screens/courses_screen.dart' ('lib/screens/courses_screen.dart').
+              child: ListView(
+                     ^^^^^^^^
+lib/screens/courses_screen.dart:323:13:
+Error: The method 'RefreshIndicator' isn't defined for the type '_CoursesScreenState'.
+ - '_CoursesScreenState' is from 'package:connectthrive_flutter/screens/courses_screen.dart' ('lib/screens/courses_screen.dart').
+          : RefreshIndicator(
+            ^^^^^^^^^^^^^^^^
+lib/screens/courses_screen.dart:303:12:
+Error: The method 'Scaffold' isn't defined for the type '_CoursesScreenState'.
+ - '_CoursesScreenState' is from 'package:connectthrive_flutter/screens/courses_screen.dart' ('lib/screens/courses_screen.dart').
+    return Scaffold(
+           ^^^^^^^^
+lib/screens/concept_video_screen.dart:27:11:
+Error: Superclass has no method named 'initState'.
+    super.initState();
+          ^^^^^^^^^
+lib/screens/concept_video_screen.dart:52:53:
+Error: Not a constant expression.
+            child: CircularProgressIndicator(color: Colors.white),
+                                                    ^^^^^^
+lib/screens/concept_video_screen.dart:52:20:
+Error: Not a constant expression.
+            child: CircularProgressIndicator(color: Colors.white),
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+lib/screens/concept_video_screen.dart:51:24:
+Error: Not a constant expression.
+          child: const Center(
+                       ^^^^^^
+lib/screens/concept_video_screen.dart:32:60:
+Error: The getter 'widget' isn't defined for the type '_ConceptVideoScreenState'.
+ - '_ConceptVideoScreenState' is from 'package:connectthrive_flutter/screens/concept_video_screen.dart' ('lib/screens/concept_video_screen.dart').
+    final rawUrl = 'https://dbp6bbvk4lzrp.cloudfront.net/${widget.concept.videoUrl}';
+                                                           ^^^^^^
+lib/screens/concept_video_screen.dart:35:5:
+Error: The method 'debugPrint' isn't defined for the type '_ConceptVideoScreenState'.
+ - '_ConceptVideoScreenState' is from 'package:connectthrive_flutter/screens/concept_video_screen.dart' ('lib/screens/concept_video_screen.dart').
+    debugPrint("Initializing Video Player with URL: $encodedUrl");
+    ^^^^^^^^^^
+lib/screens/concept_video_screen.dart:50:18:
+Error: The getter 'Colors' isn't defined for the type '_ConceptVideoScreenState'.
+ - '_ConceptVideoScreenState' is from 'package:connectthrive_flutter/screens/concept_video_screen.dart' ('lib/screens/concept_video_screen.dart').
+          color: Colors.black,
+                 ^^^^^^
+lib/screens/concept_video_screen.dart:49:22:
+Error: The method 'Container' isn't defined for the type '_ConceptVideoScreenState'.
+ - '_ConceptVideoScreenState' is from 'package:connectthrive_flutter/screens/concept_video_screen.dart' ('lib/screens/concept_video_screen.dart').
+        placeholder: Container(
+                     ^^^^^^^^^
+lib/screens/concept_video_screen.dart:56:7:
+Error: The method 'setState' isn't defined for the type '_ConceptVideoScreenState'.
+ - '_ConceptVideoScreenState' is from 'package:connectthrive_flutter/screens/concept_video_screen.dart' ('lib/screens/concept_video_screen.dart').
+      setState(() {});
+      ^^^^^^^^
+lib/screens/concept_video_screen.dart:58:7:
+Error: The method 'debugPrint' isn't defined for the type '_ConceptVideoScreenState'.
+ - '_ConceptVideoScreenState' is from 'package:connectthrive_flutter/screens/concept_video_screen.dart' ('lib/screens/concept_video_screen.dart').
+      debugPrint("Error initializing video player: $e");
+      ^^^^^^^^^^
+lib/screens/concept_video_screen.dart:59:7:
+Error: The method 'setState' isn't defined for the type '_ConceptVideoScreenState'.
+ - '_ConceptVideoScreenState' is from 'package:connectthrive_flutter/screens/concept_video_screen.dart' ('lib/screens/concept_video_screen.dart').
+      setState(() {
+      ^^^^^^^^
+lib/screens/concept_video_screen.dart:69:11:
+Error: Superclass has no method named 'dispose'.
+    super.dispose();
+          ^^^^^^^
+lib/screens/concept_video_screen.dart:73:16:
+Error: 'BuildContext' isn't a type.
+  Widget build(BuildContext context) {
+               ^^^^^^^^^^^^
+lib/screens/concept_video_screen.dart:78:32:
+Error: Not a constant expression.
+        backgroundColor: const Color(0xFF225663),
+                               ^^^^^
+lib/screens/concept_video_screen.dart:89:49:
+Error: Not a constant expression.
+                        style: TextStyle(color: Colors.white, fontSize: 16),
+                                                ^^^^^^
+lib/screens/concept_video_screen.dart:89:32:
+Error: Not a constant expression.
+                        style: TextStyle(color: Colors.white, fontSize: 16),
+                               ^^^^^^^^^
+lib/screens/concept_video_screen.dart:87:29:
+Error: Not a constant expression.
+                    ? const Text(
+                            ^^^^
+lib/screens/concept_video_screen.dart:93:66:
+Error: Not a constant expression.
+                        : const CircularProgressIndicator(color: Colors.white)),
+                                                                 ^^^^^^
+lib/screens/concept_video_screen.dart:93:33:
+Error: Not a constant expression.
+                        : const CircularProgressIndicator(color: Colors.white)),
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^
+lib/screens/concept_video_screen.dart:99:30:
+Error: Couldn't find constructor 'EdgeInsets.all'.
+              padding: const EdgeInsets.all(16),
+                             ^^^^^^^^^^
+lib/screens/concept_video_screen.dart:108:30:
+Error: Not a constant expression.
+                      color: Colors.grey,
+                             ^^^^^^
+lib/screens/concept_video_screen.dart:109:35:
+Error: Not a constant expression.
+                      fontWeight: FontWeight.bold,
+                                  ^^^^^^^^^^
+lib/screens/concept_video_screen.dart:106:34:
+Error: Not a constant expression.
+                    style: const TextStyle(
+                                 ^^^^^^^^^
+lib/screens/concept_video_screen.dart:112:25:
+Error: Not a constant expression.
+                  const SizedBox(height: 4),
+                        ^^^^^^^^
+lib/screens/concept_video_screen.dart:117:35:
+Error: Not a constant expression.
+                      fontWeight: FontWeight.bold,
+                                  ^^^^^^^^^^
+lib/screens/concept_video_screen.dart:118:30:
+Error: Not a constant expression.
+                      color: Colors.black87,
+                             ^^^^^^
+lib/screens/concept_video_screen.dart:115:34:
+Error: Not a constant expression.
+                    style: const TextStyle(
+                                 ^^^^^^^^^
+lib/screens/concept_video_screen.dart:121:25:
+Error: Not a constant expression.
+                  const SizedBox(height: 8),
+                        ^^^^^^^^
+lib/screens/concept_video_screen.dart:124:65:
+Error: Not a constant expression.
+                    style: const TextStyle(fontSize: 11, color: Colors.blueGrey),
+                                                                ^^^^^^
+lib/screens/concept_video_screen.dart:124:34:
+Error: Not a constant expression.
+                    style: const TextStyle(fontSize: 11, color: Colors.blueGrey),
+                                 ^^^^^^^^^
+lib/screens/concept_video_screen.dart:75:24:
+Error: The getter 'Colors' isn't defined for the type '_ConceptVideoScreenState'.
+ - '_ConceptVideoScreenState' is from 'package:connectthrive_flutter/screens/concept_video_screen.dart' ('lib/screens/concept_video_screen.dart').
+      backgroundColor: Colors.black,
+                       ^^^^^^
+lib/screens/concept_video_screen.dart:77:21:
+Error: The getter 'widget' isn't defined for the type '_ConceptVideoScreenState'.
+ - '_ConceptVideoScreenState' is from 'package:connectthrive_flutter/screens/concept_video_screen.dart' ('lib/screens/concept_video_screen.dart').
+        title: Text(widget.concept.title),
+                    ^^^^^^
+lib/screens/concept_video_screen.dart:77:16:
+Error: The method 'Text' isn't defined for the type '_ConceptVideoScreenState'.
+ - '_ConceptVideoScreenState' is from 'package:connectthrive_flutter/screens/concept_video_screen.dart' ('lib/screens/concept_video_screen.dart').
+        title: Text(widget.concept.title),
+               ^^^^
+lib/screens/concept_video_screen.dart:79:26:
+Error: The getter 'Colors' isn't defined for the type '_ConceptVideoScreenState'.
+ - '_ConceptVideoScreenState' is from 'package:connectthrive_flutter/screens/concept_video_screen.dart' ('lib/screens/concept_video_screen.dart').
+        foregroundColor: Colors.white,
+                         ^^^^^^
+lib/screens/concept_video_screen.dart:76:15:
+Error: The method 'AppBar' isn't defined for the type '_ConceptVideoScreenState'.
+ - '_ConceptVideoScreenState' is from 'package:connectthrive_flutter/screens/concept_video_screen.dart' ('lib/screens/concept_video_screen.dart').
+      appBar: AppBar(
+              ^^^^^^
+lib/screens/concept_video_screen.dart:85:22:
+Error: The method 'Center' isn't defined for the type '_ConceptVideoScreenState'.
+ - '_ConceptVideoScreenState' is from 'package:connectthrive_flutter/screens/concept_video_screen.dart' ('lib/screens/concept_video_screen.dart').
+              child: Center(
+                     ^^^^^^
+lib/screens/concept_video_screen.dart:84:13:
+Error: The method 'Expanded' isn't defined for the type '_ConceptVideoScreenState'.
+ - '_ConceptVideoScreenState' is from 'package:connectthrive_flutter/screens/concept_video_screen.dart' ('lib/screens/concept_video_screen.dart').
+            Expanded(
+            ^^^^^^^^
+lib/screens/concept_video_screen.dart:97:22:
+Error: The getter 'Colors' isn't defined for the type '_ConceptVideoScreenState'.
+ - '_ConceptVideoScreenState' is from 'package:connectthrive_flutter/screens/concept_video_screen.dart' ('lib/screens/concept_video_screen.dart').
+              color: Colors.white,
+                     ^^^^^^
+lib/screens/concept_video_screen.dart:101:37:
+Error: The getter 'CrossAxisAlignment' isn't defined for the type '_ConceptVideoScreenState'.
+ - '_ConceptVideoScreenState' is from 'package:connectthrive_flutter/screens/concept_video_screen.dart' ('lib/screens/concept_video_screen.dart').
+                crossAxisAlignment: CrossAxisAlignment.start,
+                                    ^^^^^^^^^^^^^^^^^^
+lib/screens/concept_video_screen.dart:102:31:
+Error: The getter 'MainAxisSize' isn't defined for the type '_ConceptVideoScreenState'.
+ - '_ConceptVideoScreenState' is from 'package:connectthrive_flutter/screens/concept_video_screen.dart' ('lib/screens/concept_video_screen.dart').
+                mainAxisSize: MainAxisSize.min,
+                              ^^^^^^^^^^^^
+lib/screens/concept_video_screen.dart:105:21:
+Error: The getter 'widget' isn't defined for the type '_ConceptVideoScreenState'.
+ - '_ConceptVideoScreenState' is from 'package:connectthrive_flutter/screens/concept_video_screen.dart' ('lib/screens/concept_video_screen.dart').
+                    widget.moduleName,
+                    ^^^^^^
+lib/screens/concept_video_screen.dart:104:19:
+Error: The method 'Text' isn't defined for the type '_ConceptVideoScreenState'.
+ - '_ConceptVideoScreenState' is from 'package:connectthrive_flutter/screens/concept_video_screen.dart' ('lib/screens/concept_video_screen.dart').
+                  Text(
+                  ^^^^
+lib/screens/concept_video_screen.dart:114:21:
+Error: The getter 'widget' isn't defined for the type '_ConceptVideoScreenState'.
+ - '_ConceptVideoScreenState' is from 'package:connectthrive_flutter/screens/concept_video_screen.dart' ('lib/screens/concept_video_screen.dart').
+                    widget.concept.title,
+                    ^^^^^^
+lib/screens/concept_video_screen.dart:113:19:
+Error: The method 'Text' isn't defined for the type '_ConceptVideoScreenState'.
+ - '_ConceptVideoScreenState' is from 'package:connectthrive_flutter/screens/concept_video_screen.dart' ('lib/screens/concept_video_screen.dart').
+                  Text(
+                  ^^^^
+lib/screens/concept_video_screen.dart:123:40:
+Error: The getter 'widget' isn't defined for the type '_ConceptVideoScreenState'.
+ - '_ConceptVideoScreenState' is from 'package:connectthrive_flutter/screens/concept_video_screen.dart' ('lib/screens/concept_video_screen.dart').
+                    "S3 Storage Key: ${widget.concept.videoUrl}",
+                                       ^^^^^^
+lib/screens/concept_video_screen.dart:122:19:
+Error: The method 'Text' isn't defined for the type '_ConceptVideoScreenState'.
+ - '_ConceptVideoScreenState' is from 'package:connectthrive_flutter/screens/concept_video_screen.dart' ('lib/screens/concept_video_screen.dart').
+                  Text(
+                  ^^^^
+lib/screens/concept_video_screen.dart:100:22:
+Error: The method 'Column' isn't defined for the type '_ConceptVideoScreenState'.
+ - '_ConceptVideoScreenState' is from 'package:connectthrive_flutter/screens/concept_video_screen.dart' ('lib/screens/concept_video_screen.dart').
+              child: Column(
+                     ^^^^^^
+lib/screens/concept_video_screen.dart:96:13:
+Error: The method 'Container' isn't defined for the type '_ConceptVideoScreenState'.
+ - '_ConceptVideoScreenState' is from 'package:connectthrive_flutter/screens/concept_video_screen.dart' ('lib/screens/concept_video_screen.dart').
+            Container(
+            ^^^^^^^^^
+lib/screens/concept_video_screen.dart:82:16:
+Error: The method 'Column' isn't defined for the type '_ConceptVideoScreenState'.
+ - '_ConceptVideoScreenState' is from 'package:connectthrive_flutter/screens/concept_video_screen.dart' ('lib/screens/concept_video_screen.dart').
+        child: Column(
+               ^^^^^^
+lib/screens/concept_video_screen.dart:81:13:
+Error: The method 'SafeArea' isn't defined for the type '_ConceptVideoScreenState'.
+ - '_ConceptVideoScreenState' is from 'package:connectthrive_flutter/screens/concept_video_screen.dart' ('lib/screens/concept_video_screen.dart').
+      body: SafeArea(
+            ^^^^^^^^
+lib/screens/concept_video_screen.dart:74:12:
+Error: The method 'Scaffold' isn't defined for the type '_ConceptVideoScreenState'.
+ - '_ConceptVideoScreenState' is from 'package:connectthrive_flutter/screens/concept_video_screen.dart' ('lib/screens/concept_video_screen.dart').
+    return Scaffold(
+           ^^^^^^^^
+Error: Compilation failed.
+  Command: /Users/venkata.rao/Documents/Dev/flutter/bin/cache/dart-sdk/bin/dart compile js --platform-binaries=/Users/venkata.rao/Documents/Dev/flutter/bin/cache/flutter_web_sdk/kernel --invoker=flutter_tool -Ddart.vm.product=true -DFLUTTER_VERSION=3.41.9 -DFLUTTER_CHANNEL=stable -DFLUTTER_GIT_URL=https://github.com/flutter/flutter.git -DFLUTTER_FRAMEWORK_REVISION=00b0c91f06 -DFLUTTER_ENGINE_REVISION=42d3d75a56 -DFLUTTER_DART_VERSION=3.11.5 -DFLUTTER_WEB_USE_SKIA=true -DFLUTTER_WEB_USE_SKWASM=false -DFLUTTER_WEB_CANVASKIT_URL=https://www.gstatic.com/flutter-canvaskit/42d3d75a56efe1a2e9902f52dc8006099c45d937/ --native-null-assertions --no-source-maps -O4 --minify -o /Users/venkata.rao/Documents/code/connectthrive_flutter/.dart_tool/flutter_build/fbba5aa2a2c17cd23d7762d1f7feb2dd/app.dill --packages=/Users/venkata.rao/Documents/code/connectthrive_flutter/.dart_tool/package_config.json --cfe-only /Users/venkata.rao/Documents/code/connectthrive_flutter/.dart_tool/flutter_build/fbba5aa2a2c17cd23d7762d1f7feb2dd/main.dart
+#0      RunResult.throwException (package:flutter_tools/src/base/process.dart:153:5)
+#1      _DefaultProcessUtils.run (package:flutter_tools/src/base/process.dart:379:19)
+<asynchronous suspension>
+#2      Dart2JSTarget.build (package:flutter_tools/src/build_system/targets/web.dart:208:5)
+<asynchronous suspension>
+#3      _BuildInstance._invokeInternal (package:flutter_tools/src/build_system/build_system.dart:937:9)
+<asynchronous suspension>
+#4      Future.wait.<anonymous closure> (dart:async/future.dart:546:21)
+<asynchronous suspension>
+#5      _BuildInstance.invokeTarget (package:flutter_tools/src/build_system/build_system.dart:875:32)
+<asynchronous suspension>
+#6      Future.wait.<anonymous closure> (dart:async/future.dart:546:21)
+<asynchronous suspension>
+#7      _BuildInstance.invokeTarget (package:flutter_tools/src/build_system/build_system.dart:875:32)
+<asynchronous suspension>
+#8      FlutterBuildSystem.build (package:flutter_tools/src/build_system/build_system.dart:684:16)
+<asynchronous suspension>
+#9      WebBuilder.buildWeb (package:flutter_tools/src/web/compile.dart:107:34)
+<asynchronous suspension>
+#10     BuildWebCommand.runCommand (package:flutter_tools/src/commands/build_web.dart:300:5)
+<asynchronous suspension>
+#11     FlutterCommand.run.<anonymous closure> (package:flutter_tools/src/runner/flutter_command.dart:1590:27)
+<asynchronous suspension>
+#12     AppContext.run.<anonymous closure> (package:flutter_tools/src/base/context.dart:154:19)
+<asynchronous suspension>
+#13     CommandRunner.runCommand (package:args/command_runner.dart:212:13)
+<asynchronous suspension>
+#14     FlutterCommandRunner.runCommand.<anonymous closure> (package:flutter_tools/src/runner/flutter_command_runner.dart:496:9)
+<asynchronous suspension>
+#15     AppContext.run.<anonymous closure> (package:flutter_tools/src/base/context.dart:154:19)
+<asynchronous suspension>
+#16     FlutterCommandRunner.runCommand (package:flutter_tools/src/runner/flutter_command_runner.dart:431:5)
+<asynchronous suspension>
+#17     FlutterCommandRunner.run.<anonymous closure> (package:flutter_tools/src/runner/flutter_command_runner.dart:307:33)
+<asynchronous suspension>
+#18     run.<anonymous closure>.<anonymous closure> (package:flutter_tools/runner.dart:104:11)
+<asynchronous suspension>
+#19     AppContext.run.<anonymous closure> (package:flutter_tools/src/base/context.dart:154:19)
+<asynchronous suspension>
+#20     main (package:flutter_tools/executable.dart:103:3)
+<asynchronous suspension>
+
+Compiling lib/main.dart for the Web...                             24.2s
+Error: Failed to compile application for the Web.

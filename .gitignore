@@ -1,0 +1,56 @@
+# Flutter/Dart
+**/.dart_tool/
+**/build/
+**/.packages
+**/.flutter-plugins
+**/.flutter-plugins-dependencies
+**/generated_plugin_registrant.dart
+**/.pub-cache/
+
+# Android
+**/.gradle/
+**/local.properties
+**/*.apk
+**/*.ap_
+**/*.aab
+
+# iOS
+**/Pods/
+**/.symlinks/
+**/Flutter/Flutter.podspec
+
+# Node/React
+**/node_modules/
+**/dist/
+.env
+**/.env
+**/.env.local
+**/.env.development.local
+**/.env.test.local
+**/.env.production.local
+**/npm-debug.log*
+**/yarn-debug.log*
+**/yarn-error.log*
+
+# Java/Maven/Gradle backend
+**/target/
+**/.settings/
+**/.classpath
+**/.project
+**/.factorypath
+
+# OS and Editors
+.DS_Store
+.DS_Store?
+**/._*
+**/.Spotlight-V100
+**/.Trashes
+ehthumbs.db
+Thumbs.db
+**/.idea/
+**/.vscode/
+**/*.suo
+**/*.ntvs*
+**/*.njsproj
+**/*.sln
+**/*.swp

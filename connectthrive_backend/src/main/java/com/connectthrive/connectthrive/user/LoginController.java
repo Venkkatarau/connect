@@ -1,5 +1,6 @@
 package com.connectthrive.connectthrive.user;
 
+import com.connectthrive.connectthrive.user.model.AdminOtpLoginRequest;
 import com.connectthrive.connectthrive.user.model.LoginRequest;
 import com.connectthrive.connectthrive.user.model.LoginResponse;
 import com.connectthrive.connectthrive.user.model.SignupRequest;
@@ -20,6 +21,16 @@ public class LoginController {
     public ResponseEntity<LoginResponse> requestSignupOtp(@RequestParam String mobileNumber) {
         return authService.requestSignupOtp(mobileNumber);
 
+    }
+
+    @PostMapping("/admin/request-login-otp")
+    public ResponseEntity<LoginResponse> requestAdminLoginOtp(@RequestParam String mobileNumber) {
+        return authService.requestAdminLoginOtp(mobileNumber);
+    }
+
+    @PostMapping("/admin/verify-login-otp")
+    public ResponseEntity<LoginResponse> verifyAdminLoginOtp(@RequestBody AdminOtpLoginRequest request) {
+        return authService.verifyAdminLoginOtp(request.getMobileNumber(), request.getOtp());
     }
 
     @PostMapping("/signup")

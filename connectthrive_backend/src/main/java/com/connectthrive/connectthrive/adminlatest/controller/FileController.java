@@ -53,6 +53,15 @@ private ConceptService s3Service;
         }
     }
 
+    @DeleteMapping("/admin/concepts/{conceptId}")
+    public ResponseEntity<String> deleteConcept(@PathVariable Long conceptId) {
+        try {
+            return ResponseEntity.ok(s3Service.deleteConcept(conceptId));
+        } catch (RuntimeException ex) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
+        }
+    }
+
     @GetMapping("/user/view/supportingDocuments")
     public ResponseEntity<byte[]> viewFile(@RequestParam String filename) {
         try {

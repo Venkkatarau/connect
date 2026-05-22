@@ -3,10 +3,12 @@ package com.connectthrive.connectthrive.adminlatest.service;
 import com.connectthrive.connectthrive.adminlatest.entity.Concept;
 import com.connectthrive.connectthrive.adminlatest.entity.CourseModule;
 import com.connectthrive.connectthrive.adminlatest.model.MultiFileUploadResponse;
+import com.connectthrive.connectthrive.adminlatest.repository.BatchConceptRepository;
 import com.connectthrive.connectthrive.adminlatest.repository.ConceptRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 import software.amazon.awssdk.core.ResponseInputStream;
 import software.amazon.awssdk.core.sync.RequestBody;
@@ -15,6 +17,7 @@ import software.amazon.awssdk.services.s3.model.*;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 
@@ -29,6 +32,8 @@ public class ConceptService {
 
     @Autowired
     BatchService batchService;
+    @Autowired
+    BatchConceptRepository batchConceptRepository;
     @Autowired
     ThumbnailService thumbnailService;
     public MultiFileUploadResponse uploadFiles(List<MultipartFile> files,MultipartFile multipartFile,String title, Long moduleId,Long batchId,String videoType) throws IOException, InterruptedException {
@@ -68,6 +73,36 @@ public class ConceptService {
         conceptList.add(concept1.getId());
         batchService.assignConceptsToBatch(batchId,conceptList);
         return new MultiFileUploadResponse(true,"Files uploaded successfully!",videoFileName,uploadFileName);
+    }
+
+    @Transactional
+    public String deleteConcept(Long conceptId) {
+        Concept concept = repo.findById(conceptId)
+                .orElseThrow(() -> new RuntimeException("Concept not found"));
+
+        List<String> assetKeys = new ArrayList<>();
+        addKeyIfPresent(assetKeys, concept.getVideoFileName());
+        addKeyIfPresent(assetKeys, concept.getThumbnailFileName());
+        if (concept.getSupportingDocument() != null) {
+            concept.getSupportingDocument().forEach(key -> addKeyIfPresent(assetKeys, key));
+        }
+
+        batchConceptRepository.deleteNotInBatchIds(conceptId, Collections.emptyList());
+        repo.delete(concept);
+        repo.flush();
+
+        List<String> failedDeletes = new ArrayList<>();
+        for (String key : assetKeys) {
+            if (!deleteObjectQuietly(key)) {
+                failedDeletes.add(key);
+            }
+        }
+
+        if (failedDeletes.isEmpty()) {
+            return "Concept deleted successfully";
+        }
+
+        return "Concept deleted, but failed to remove some files from storage";
     }
 
     public byte[] downloadFile(String filename) {
@@ -182,5 +217,23 @@ public class ConceptService {
     private String sanitizeFilename(String filename) {
         if (filename == null) return "file";
         return filename.replaceAll("[^\\x00-\\x7F]", "").replaceAll("\\s+", "_");
+    }
+
+    private void addKeyIfPresent(List<String> assetKeys, String key) {
+        if (key != null && !key.isBlank()) {
+            assetKeys.add(key);
+        }
+    }
+
+    private boolean deleteObjectQuietly(String key) {
+        try {
+            s3Client.deleteObject(DeleteObjectRequest.builder()
+                    .bucket(bucketName)
+                    .key(key)
+                    .build());
+            return true;
+        } catch (Exception ex) {
+            return false;
+        }
     }
 }

@@ -83,8 +83,9 @@ public class ModuleController {
                 dto.setTitle(title);
                 dto.setId(courseId);
                 dto.setThumbnailFileName(thumbinailFileName);
+                dto.setVideoType(normalizeVideoType(videoType));
                 dto.setBatchList(batchList);
-                if ("Setup Videos".equalsIgnoreCase(videoType)) {
+                if (isSetupVideo(videoType)) {
                     module.getConcepts().add(dto); // Add only once
                 } else {
                     module.getTransactionConcepts().add(dto); // Add only once
@@ -101,6 +102,14 @@ public class ModuleController {
 
         return new ArrayList<>(grouped.values());
 
+    }
+
+    private boolean isSetupVideo(String videoType) {
+        return "Setup Videos".equalsIgnoreCase(normalizeVideoType(videoType));
+    }
+
+    private String normalizeVideoType(String videoType) {
+        return videoType == null ? null : videoType.trim();
     }
 //    @GetMapping("/getBatchConceptsBasedOnUserAccess")
 //    public List<ModuleDTO> getModulesForBatch(@RequestParam("batchId") Long batchId,@RequestParam("userId") Long userId) {

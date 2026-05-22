@@ -22,13 +22,47 @@ public class AuthService {
     @Autowired
     private OtpService otpService;
 
+    private static final String UNREGISTERED_ADMIN_MESSAGE = "This mobile number is not registered";
+    private static final String UNREGISTERED_USER_MESSAGE = "This mobile number is not registered";
+    private static final String ADMIN_EMAIL_LOGIN_BLOCK_MESSAGE = "This email is registered as admin. You cannot login here";
+
     public ResponseEntity<LoginResponse> requestSignupOtp(String mobileNumber) {
+        if (userRepository.findByMobileNumber(mobileNumber).isEmpty()) {
+            return ResponseEntity.ok(new LoginResponse(false, UNREGISTERED_USER_MESSAGE));
+        }
+
        String response= otpService.createOtp(mobileNumber);
         if(response.contains("Success")) {
            return ResponseEntity.ok(new LoginResponse(true, "OTP send to your mobile number!!!!"));
         }else{
             return ResponseEntity.ok(new LoginResponse(false, response));
         }
+    }
+
+    public ResponseEntity<LoginResponse> requestAdminLoginOtp(String mobileNumber) {
+        if (findRegisteredAdminByMobileNumber(mobileNumber).isEmpty()) {
+            return ResponseEntity.ok(new LoginResponse(false, UNREGISTERED_ADMIN_MESSAGE));
+        }
+
+        String response = otpService.createOtp(mobileNumber);
+        if (response.contains("Success")) {
+            return ResponseEntity.ok(new LoginResponse(true, "OTP send to your mobile number!!!!"));
+        }
+
+        return ResponseEntity.ok(new LoginResponse(false, response));
+    }
+
+    public ResponseEntity<LoginResponse> verifyAdminLoginOtp(String mobileNumber, String otp) {
+        Optional<User> adminUser = findRegisteredAdminByMobileNumber(mobileNumber);
+        if (adminUser.isEmpty()) {
+            return ResponseEntity.ok(new LoginResponse(false, UNREGISTERED_ADMIN_MESSAGE));
+        }
+
+        if (!otpService.verifyOtp(mobileNumber, otp)) {
+            return ResponseEntity.ok(new LoginResponse(false, "Invalid OTP"));
+        }
+
+        return ResponseEntity.ok(new LoginResponse(true, "Login successful"));
     }
 
     public ResponseEntity<LoginResponse> signup(String username, String mobileNumber, String otp,String userType) {
@@ -53,13 +87,18 @@ public class AuthService {
     }
 
     public String login(String mobileOrEmail, String password) {
-        Optional<User> userOpt = mobileOrEmail.contains("@")
+        boolean emailLogin = mobileOrEmail.contains("@");
+        Optional<User> userOpt = emailLogin
                 ? userRepository.findByEmail(mobileOrEmail)
                 : userRepository.findByMobileNumber(mobileOrEmail);
 
         if (userOpt.isEmpty()) return "Invalid credentials";
 
         User user = userOpt.get();
+
+        if (emailLogin && "admin".equalsIgnoreCase(user.getUserType())) {
+            return ADMIN_EMAIL_LOGIN_BLOCK_MESSAGE;
+        }
 
         if (!passwordEncoder.matches(password, user.getPassword())) {
             return "Invalid credentials";
@@ -115,5 +154,10 @@ public class AuthService {
         userRepository.save(user);
 
         return "Logged out successfully";
+    }
+
+    private Optional<User> findRegisteredAdminByMobileNumber(String mobileNumber) {
+        return userRepository.findByMobileNumber(mobileNumber)
+                .filter(user -> "admin".equalsIgnoreCase(user.getUserType()));
     }
 }

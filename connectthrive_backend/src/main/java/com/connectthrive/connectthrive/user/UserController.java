@@ -20,6 +20,8 @@ import java.util.stream.Collectors;
 @RequestMapping("/v1")
 public class UserController {
 
+    private static final Long DEFAULT_CORP_BATCH_ID = 2L;
+
     @Autowired
     private UserRepository userRepository;
 
@@ -43,7 +45,7 @@ public class UserController {
     @GetMapping("/user/by-mobile")
     public ResponseEntity<?> getUserByMobile(@RequestParam String mobileNumber) {
         return userRepository.findByMobileNumber(mobileNumber)
-                .map(user -> ResponseEntity.ok(toUserResponse(user)))
+                .map(user -> ResponseEntity.ok(toUserResponse(ensureDefaultBatchAssigned(user))))
                 .orElse(ResponseEntity.notFound().build());
     }
 
@@ -97,6 +99,23 @@ public class UserController {
         }
 
         return deduplicated;
+    }
+
+    private User ensureDefaultBatchAssigned(User user) {
+        if (!"student".equalsIgnoreCase(user.getUserType())) {
+            return user;
+        }
+
+        if (user.getBatch() != null || !user.getBatches().isEmpty()) {
+            return user;
+        }
+
+        return batchRepository.findById(DEFAULT_CORP_BATCH_ID)
+                .map(batch -> {
+                    user.setBatch(batch);
+                    return userRepository.save(user);
+                })
+                .orElse(user);
     }
 
     private Map<String, Object> toUserResponse(User user) {

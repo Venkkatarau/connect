@@ -23,14 +23,9 @@ public class AuthService {
     private OtpService otpService;
 
     private static final String UNREGISTERED_ADMIN_MESSAGE = "This mobile number is not registered";
-    private static final String UNREGISTERED_USER_MESSAGE = "This mobile number is not registered";
     private static final String ADMIN_EMAIL_LOGIN_BLOCK_MESSAGE = "This email is registered as admin. You cannot login here";
 
     public ResponseEntity<LoginResponse> requestSignupOtp(String mobileNumber) {
-        if (userRepository.findByMobileNumber(mobileNumber).isEmpty()) {
-            return ResponseEntity.ok(new LoginResponse(false, UNREGISTERED_USER_MESSAGE));
-        }
-
        String response= otpService.createOtp(mobileNumber);
         if(response.contains("Success")) {
            return ResponseEntity.ok(new LoginResponse(true, "OTP send to your mobile number!!!!"));

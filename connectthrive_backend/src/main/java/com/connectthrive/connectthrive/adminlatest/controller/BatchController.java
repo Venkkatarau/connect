@@ -93,4 +93,24 @@ public class BatchController {
         return ResponseEntity.ok(response);
     }
 
+    @GetMapping("/users/{userId}/modules")
+    public ResponseEntity<List<ModuleDTO>> getModulesForUser(@PathVariable Long userId) {
+        try {
+            List<ModuleDTO> response = batchService.getModulesForUser(userId);
+            return ResponseEntity.ok(response);
+        } catch (RuntimeException ex) {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @DeleteMapping("/deleteBatch/{id}")
+    public ResponseEntity<String> deleteBatch(@PathVariable Long id) {
+        try {
+            batchService.deleteBatch(id);
+            return ResponseEntity.ok("Batch deleted successfully");
+        } catch (RuntimeException ex) {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
 }

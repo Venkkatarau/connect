@@ -10,8 +10,11 @@ import com.connectthrive.connectthrive.adminlatest.repository.BatchRepository;
 import com.connectthrive.connectthrive.adminlatest.repository.ConceptRepository;
 import com.connectthrive.connectthrive.adminlatest.repository.ModuleAccessRequestRepository;
 import com.connectthrive.connectthrive.adminlatest.repository.ModuleRepository;
+import com.connectthrive.connectthrive.user.model.User;
+import com.connectthrive.connectthrive.user.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
 import java.util.function.Predicate;
@@ -29,6 +32,9 @@ public class BatchService {
     @Autowired
     private ModuleAccessRequestRepository accessRepo;
 
+    @Autowired
+    private UserRepository userRepository;
+
     public void assignConceptsToBatch(Long batchId, List<Long> conceptIds) {
         Batch batch = batchRepository.findById(batchId)
                 .orElseThrow(() -> new RuntimeException("Batch not found"));
@@ -42,21 +48,39 @@ public class BatchService {
     }
 
     public List<ModuleDTO> getModulesForBatch(Long batchId,Long userId) {
-        // Fetch the batch, return empty list if not found
-        List<ModuleAccessRequest> approvedRequests = accessRepo.findByStudentId(userId).stream()
-                .filter(ModuleAccessRequest::isApproved)
-                .toList();
-
-        Set<Long> accessiblePaidModuleIds = approvedRequests.stream()
-                .map(req -> req.getModule().getId())
-                .collect(Collectors.toSet());
         Batch batch = batchRepository.findById(batchId).orElse(null);
         if (batch == null) {
             return new ArrayList<>();
         }
 
-        Set<Concept> concepts = batch.getAccessibleConcepts();
+        return buildModuleResponses(batch.getAccessibleConcepts(), getAccessiblePaidModuleIds(userId));
+    }
 
+    public List<ModuleDTO> getModulesForUser(Long userId) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+
+        Map<Long, Concept> conceptsById = new LinkedHashMap<>();
+        for (Batch batch : user.getBatches()) {
+            for (Concept concept : batch.getAccessibleConcepts()) {
+                conceptsById.putIfAbsent(concept.getId(), concept);
+            }
+        }
+
+        return buildModuleResponses(conceptsById.values(), getAccessiblePaidModuleIds(userId));
+    }
+
+    private Set<Long> getAccessiblePaidModuleIds(Long userId) {
+        List<ModuleAccessRequest> approvedRequests = accessRepo.findByStudentId(userId).stream()
+                .filter(ModuleAccessRequest::isApproved)
+                .toList();
+
+        return approvedRequests.stream()
+                .map(req -> req.getModule().getId())
+                .collect(Collectors.toSet());
+    }
+
+    private List<ModuleDTO> buildModuleResponses(Collection<Concept> concepts, Set<Long> accessiblePaidModuleIds) {
         // Group by CourseModule
         Map<CourseModule, List<Concept>> groupedByModule = concepts.stream()
                 .collect(Collectors.groupingBy(Concept::getModule));
@@ -99,6 +123,32 @@ public class BatchService {
         }
 
         return moduleResponses;
+    }
+
+    @Transactional
+    public void deleteBatch(Long batchId) {
+        Batch batch = batchRepository.findById(batchId)
+                .orElseThrow(() -> new RuntimeException("Batch not found"));
+
+        List<User> users = userRepository.findAll();
+        for (User user : users) {
+            boolean primaryBatchMatch = user.getBatch() != null && batchId.equals(user.getBatch().getId());
+            boolean assignedBatchMatch = user.getBatches().stream().anyMatch(assignedBatch -> batchId.equals(assignedBatch.getId()));
+
+            if (!primaryBatchMatch && !assignedBatchMatch) {
+                continue;
+            }
+
+            Set<Batch> remainingBatches = user.getBatches().stream()
+                    .filter(assignedBatch -> !batchId.equals(assignedBatch.getId()))
+                    .collect(Collectors.toCollection(LinkedHashSet::new));
+            user.setBatches(remainingBatches);
+            userRepository.save(user);
+        }
+
+        batch.getAccessibleConcepts().clear();
+        batchRepository.save(batch);
+        batchRepository.delete(batch);
     }
 
 

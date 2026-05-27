@@ -5,11 +5,11 @@ import com.connectthrive.connectthrive.adminlatest.entity.Concept;
 import com.connectthrive.connectthrive.adminlatest.entity.CourseModule;
 import com.connectthrive.connectthrive.adminlatest.entity.ModuleAccessRequest;
 import com.connectthrive.connectthrive.adminlatest.model.ConceptDTO;
+import com.connectthrive.connectthrive.adminlatest.model.GetBatch;
 import com.connectthrive.connectthrive.adminlatest.model.ModuleDTO;
 import com.connectthrive.connectthrive.adminlatest.repository.BatchRepository;
 import com.connectthrive.connectthrive.adminlatest.repository.ConceptRepository;
 import com.connectthrive.connectthrive.adminlatest.repository.ModuleAccessRequestRepository;
-import com.connectthrive.connectthrive.adminlatest.repository.ModuleRepository;
 import com.connectthrive.connectthrive.user.model.User;
 import com.connectthrive.connectthrive.user.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +17,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
-import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 @Service
@@ -53,21 +52,40 @@ public class BatchService {
             return new ArrayList<>();
         }
 
-        return buildModuleResponses(batch.getAccessibleConcepts(), getAccessiblePaidModuleIds(userId));
+        Map<Long, List<GetBatch>> batchListByConceptId = new LinkedHashMap<>();
+        List<GetBatch> batchList = toBatchSummaries(List.of(batch));
+        for (Concept concept : batch.getAccessibleConcepts()) {
+            batchListByConceptId.put(concept.getId(), batchList);
+        }
+
+        return buildModuleResponses(batch.getAccessibleConcepts(), getAccessiblePaidModuleIds(userId), batchListByConceptId);
     }
 
     public List<ModuleDTO> getModulesForUser(Long userId) {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
+        List<Batch> sortedUserBatches = user.getBatches().stream()
+            .sorted(Comparator.comparing(Batch::getId, Comparator.nullsLast(Long::compareTo)))
+            .toList();
+
         Map<Long, Concept> conceptsById = new LinkedHashMap<>();
-        for (Batch batch : user.getBatches()) {
+        Map<Long, LinkedHashMap<Long, Batch>> batchesByConceptId = new LinkedHashMap<>();
+        for (Batch batch : sortedUserBatches) {
             for (Concept concept : batch.getAccessibleConcepts()) {
                 conceptsById.putIfAbsent(concept.getId(), concept);
+                batchesByConceptId
+                        .computeIfAbsent(concept.getId(), ignored -> new LinkedHashMap<>())
+                        .put(batch.getId(), batch);
             }
         }
 
-        return buildModuleResponses(conceptsById.values(), getAccessiblePaidModuleIds(userId));
+        Map<Long, List<GetBatch>> batchListByConceptId = new LinkedHashMap<>();
+        for (Map.Entry<Long, LinkedHashMap<Long, Batch>> entry : batchesByConceptId.entrySet()) {
+            batchListByConceptId.put(entry.getKey(), toBatchSummaries(entry.getValue().values()));
+        }
+
+        return buildModuleResponses(conceptsById.values(), getAccessiblePaidModuleIds(userId), batchListByConceptId);
     }
 
     private Set<Long> getAccessiblePaidModuleIds(Long userId) {
@@ -80,16 +98,24 @@ public class BatchService {
                 .collect(Collectors.toSet());
     }
 
-    private List<ModuleDTO> buildModuleResponses(Collection<Concept> concepts, Set<Long> accessiblePaidModuleIds) {
+    private List<ModuleDTO> buildModuleResponses(Collection<Concept> concepts,
+                                                 Set<Long> accessiblePaidModuleIds,
+                                                 Map<Long, List<GetBatch>> batchListByConceptId) {
         // Group by CourseModule
         Map<CourseModule, List<Concept>> groupedByModule = concepts.stream()
                 .collect(Collectors.groupingBy(Concept::getModule));
 
         List<ModuleDTO> moduleResponses = new ArrayList<>();
 
-        for (Map.Entry<CourseModule, List<Concept>> entry : groupedByModule.entrySet()) {
+        List<Map.Entry<CourseModule, List<Concept>>> sortedEntries = groupedByModule.entrySet().stream()
+            .sorted(Comparator.comparingLong((Map.Entry<CourseModule, List<Concept>> entry) -> latestConceptId(entry.getValue())).reversed())
+            .toList();
+
+        for (Map.Entry<CourseModule, List<Concept>> entry : sortedEntries) {
             CourseModule module = entry.getKey();
-            List<Concept> moduleConcepts = entry.getValue();
+            List<Concept> moduleConcepts = entry.getValue().stream()
+                .sorted(Comparator.comparing(Concept::getId, Comparator.nullsLast(Long::compareTo)).reversed())
+                .toList();
 
             boolean isFree = "free".equalsIgnoreCase(module.getTier());
             boolean isAccessible = isFree || accessiblePaidModuleIds.contains(module.getId());
@@ -112,6 +138,7 @@ public class BatchService {
                         conceptDTO.setVideoUrl(c.getVideoFileName());
                         conceptDTO.setSupportingDocuments(c.getSupportingDocument());
                         conceptDTO.setVideoType(c.getVideoType());
+                        conceptDTO.setBatchList(batchListByConceptId.getOrDefault(c.getId(), List.of()));
                         return conceptDTO;
                     })
                     .collect(Collectors.partitioningBy(c -> "Setup Videos".equalsIgnoreCase(c.getVideoType())));
@@ -123,6 +150,21 @@ public class BatchService {
         }
 
         return moduleResponses;
+    }
+
+    private long latestConceptId(Collection<Concept> concepts) {
+        return concepts.stream()
+                .map(Concept::getId)
+                .filter(Objects::nonNull)
+                .max(Long::compareTo)
+                .orElse(Long.MIN_VALUE);
+    }
+
+    private List<GetBatch> toBatchSummaries(Collection<Batch> batches) {
+        return batches.stream()
+                .sorted(Comparator.comparing(Batch::getId, Comparator.nullsLast(Long::compareTo)))
+                .map(batch -> new BatchSummary(batch.getId(), batch.getName()))
+                .collect(Collectors.toList());
     }
 
     @Transactional
@@ -149,6 +191,26 @@ public class BatchService {
         batch.getAccessibleConcepts().clear();
         batchRepository.save(batch);
         batchRepository.delete(batch);
+    }
+
+    private static class BatchSummary implements GetBatch {
+        private final Long id;
+        private final String name;
+
+        private BatchSummary(Long id, String name) {
+            this.id = id;
+            this.name = name;
+        }
+
+        @Override
+        public Long getId() {
+            return id;
+        }
+
+        @Override
+        public String getName() {
+            return name;
+        }
     }
 
 

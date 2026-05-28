@@ -38,15 +38,21 @@ class _BatchVideosViewState extends State<BatchVideosView> {
         http.get(batchesUrl),
       ]);
 
-      debugPrint("[API Response] GET: $modulesUrl | Status: ${responses[0].statusCode}");
+      debugPrint(
+        "[API Response] GET: $modulesUrl | Status: ${responses[0].statusCode}",
+      );
       _printLongString("Body: ${responses[0].body}");
-      debugPrint("[API Response] GET: $batchesUrl | Status: ${responses[1].statusCode}");
+      debugPrint(
+        "[API Response] GET: $batchesUrl | Status: ${responses[1].statusCode}",
+      );
       _printLongString("Body: ${responses[1].body}");
 
       if (responses[0].statusCode == 200 && responses[1].statusCode == 200) {
         if (!mounted) return;
+        final rawModules = jsonDecode(responses[0].body) ?? [];
+
         setState(() {
-          _modules = jsonDecode(responses[0].body) ?? [];
+          _modules = rawModules;
           _batches = jsonDecode(responses[1].body) ?? [];
         });
       }
@@ -63,10 +69,7 @@ class _BatchVideosViewState extends State<BatchVideosView> {
 
   Future<void> _syncBatchConcepts(int conceptId, List<int> batchIds) async {
     final url = Uri.parse("$baseUrl/v1/admin/syncBatchConcepts");
-    final payload = {
-      "batchId": batchIds,
-      "conceptIds": conceptId,
-    };
+    final payload = {"batchId": batchIds, "conceptIds": conceptId};
     final body = jsonEncode(payload);
 
     try {
@@ -76,7 +79,9 @@ class _BatchVideosViewState extends State<BatchVideosView> {
         headers: {"Content-Type": "application/json"},
         body: body,
       );
-      debugPrint("[API Response] POST: $url | Status: ${response.statusCode} | Body: ${response.body}");
+      debugPrint(
+        "[API Response] POST: $url | Status: ${response.statusCode} | Body: ${response.body}",
+      );
 
       if (response.statusCode == 200) {
         ScaffoldMessenger.of(context).showSnackBar(
@@ -84,21 +89,23 @@ class _BatchVideosViewState extends State<BatchVideosView> {
         );
         _fetchData();
       } else {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text("Sync failed")),
-        );
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(const SnackBar(content: Text("Sync failed")));
       }
     } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text("Error during sync")),
-      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(const SnackBar(content: Text("Error during sync")));
     }
   }
 
   void _showBatchSyncDialog(dynamic concept) {
     // Check which batches currently have this concept
     final List<dynamic> currentBatches = concept['batchList'] ?? [];
-    final List<int> selectedBatchIds = currentBatches.map<int>((b) => b['id'] as int).toList();
+    final List<int> selectedBatchIds = currentBatches
+        .map<int>((b) => b['id'] as int)
+        .toList();
 
     showDialog(
       context: context,
@@ -129,7 +136,7 @@ class _BatchVideosViewState extends State<BatchVideosView> {
                           }
                         });
                       },
-                      activeColor: const Color(0xFF225663),
+                      activeColor: const Color(0xFF1B2677),
                     );
                   },
                 ),
@@ -145,7 +152,7 @@ class _BatchVideosViewState extends State<BatchVideosView> {
                     _syncBatchConcepts(concept['id'], selectedBatchIds);
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xFF225663),
+                    backgroundColor: const Color(0xFF1B2677),
                     foregroundColor: Colors.white,
                   ),
                   child: const Text("Sync"),
@@ -158,10 +165,130 @@ class _BatchVideosViewState extends State<BatchVideosView> {
     );
   }
 
+  Future<void> _deleteConcept(int conceptId) async {
+    final url = Uri.parse("$baseUrl/v2/admin/concepts/$conceptId");
+    try {
+      debugPrint("[API Request] DELETE: $url");
+      final response = await http.delete(url);
+      debugPrint(
+        "[API Response] DELETE: $url | Status: ${response.statusCode}",
+      );
+      if (response.statusCode == 200) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text("Video deleted successfully")),
+        );
+        _fetchData();
+      } else {
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(const SnackBar(content: Text("Failed to delete video")));
+      }
+    } catch (e) {
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(const SnackBar(content: Text("Error deleting video")));
+    }
+  }
+
+  void _confirmDeleteConcept(dynamic concept) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text("Delete '${concept['title']}'?"),
+          content: const Text(
+            "Are you sure you want to delete this video lecture? This action cannot be undone.",
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: const Text("Cancel"),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pop(context);
+                _deleteConcept(concept['id'] as int);
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.red,
+                foregroundColor: Colors.white,
+              ),
+              child: const Text("Delete"),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  Future<void> _deleteBatch(int batchId) async {
+    final url = Uri.parse("$baseUrl/v1/admin/deleteBatch/$batchId");
+    try {
+      debugPrint("[API Request] DELETE: $url");
+      final response = await http.delete(url);
+      debugPrint(
+        "[API Response] DELETE: $url | Status: ${response.statusCode} | Body: ${response.body}",
+      );
+      if (response.statusCode == 200) {
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text("Batch deleted successfully")),
+          );
+        }
+        _fetchData();
+      } else {
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text("Failed to delete batch")),
+          );
+        }
+      }
+    } catch (e) {
+      debugPrint("Error deleting batch: $e");
+      if (mounted) {
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(const SnackBar(content: Text("Error deleting batch")));
+      }
+    }
+  }
+
+  void _confirmDeleteBatch(int batchId, String batchName) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: const Text("Delete Batch"),
+          content: const Text("Do you want to delete this batch?"),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: const Text("Cancel"),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pop(context);
+                _deleteBatch(batchId);
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.red,
+                foregroundColor: Colors.white,
+              ),
+              child: const Text("Delete"),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   Widget _buildConceptBox(dynamic concept) {
-    final String thumbUrl = "$_thumbnailBaseUrl${concept['thumbnailFileName'] ?? ''}";
+    final String thumbUrl =
+        "$_thumbnailBaseUrl${concept['thumbnailFileName'] ?? ''}";
     final List<dynamic> currentBatches = concept['batchList'] ?? [];
-    final String assignedBatches = currentBatches.map((b) => b['name'] ?? '').join(', ');
+    final String assignedBatches = currentBatches
+        .map((b) => b['name'] ?? '')
+        .join(', ');
 
     return Container(
       margin: const EdgeInsets.only(bottom: 12),
@@ -197,7 +324,10 @@ class _BatchVideosViewState extends State<BatchVideosView> {
               children: [
                 Text(
                   concept['title'] ?? '',
-                  style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                  ),
                 ),
                 const SizedBox(height: 4),
                 Text(
@@ -212,6 +342,11 @@ class _BatchVideosViewState extends State<BatchVideosView> {
             onPressed: () => _showBatchSyncDialog(concept),
             tooltip: "Assign Batches",
           ),
+          IconButton(
+            icon: const Icon(Icons.delete_outline, color: Colors.redAccent),
+            onPressed: () => _confirmDeleteConcept(concept),
+            tooltip: "Delete Video",
+          ),
         ],
       ),
     );
@@ -221,7 +356,7 @@ class _BatchVideosViewState extends State<BatchVideosView> {
   Widget build(BuildContext context) {
     if (_loading) {
       return const Center(
-        child: CircularProgressIndicator(color: Color(0xFF225663)),
+        child: CircularProgressIndicator(color: Color(0xFF1B2677)),
       );
     }
 
@@ -236,7 +371,7 @@ class _BatchVideosViewState extends State<BatchVideosView> {
               style: TextStyle(
                 fontSize: 28,
                 fontWeight: FontWeight.bold,
-                color: Color(0xFF225663),
+                color: Color(0xFF1B2677),
               ),
             ),
             const SizedBox(height: 8),
@@ -252,15 +387,18 @@ class _BatchVideosViewState extends State<BatchVideosView> {
               // Filter modules containing concepts in this batch
               final List<dynamic> batchModules = [];
               for (var module in _modules) {
-                final List<dynamic> concepts = (module['concepts'] ?? []).where((c) {
-                  final List<dynamic> bl = c['batchList'] ?? [];
-                  return bl.any((b) => b['id'] == batchId);
-                }).toList();
+                final List<dynamic> concepts = (module['concepts'] ?? []).where(
+                  (c) {
+                    final List<dynamic> bl = c['batchList'] ?? [];
+                    return bl.any((b) => b['id'] == batchId);
+                  },
+                ).toList();
 
-                final List<dynamic> transConcepts = (module['transactionConcepts'] ?? []).where((c) {
-                  final List<dynamic> bl = c['batchList'] ?? [];
-                  return bl.any((b) => b['id'] == batchId);
-                }).toList();
+                final List<dynamic> transConcepts =
+                    (module['transactionConcepts'] ?? []).where((c) {
+                      final List<dynamic> bl = c['batchList'] ?? [];
+                      return bl.any((b) => b['id'] == batchId);
+                    }).toList();
 
                 if (concepts.isNotEmpty || transConcepts.isNotEmpty) {
                   batchModules.add({
@@ -272,7 +410,9 @@ class _BatchVideosViewState extends State<BatchVideosView> {
               }
 
               final totalVideos = batchModules.fold<int>(0, (acc, m) {
-                return acc + (m['concepts'] as List).length + (m['transactionConcepts'] as List).length;
+                return acc +
+                    (m['concepts'] as List).length +
+                    (m['transactionConcepts'] as List).length;
               });
 
               return Card(
@@ -284,19 +424,30 @@ class _BatchVideosViewState extends State<BatchVideosView> {
                 child: ExpansionTile(
                   onExpansionChanged: (isExpanded) {
                     if (isExpanded) {
-                      debugPrint("--- Batch Expanded: $batchName (ID: $batchId) ---");
+                      debugPrint(
+                        "--- Batch Expanded: $batchName (ID: $batchId) ---",
+                      );
                       for (var module in batchModules) {
-                        debugPrint("  Module: ${module['name']} (ID: ${module['id']})");
+                        debugPrint(
+                          "  Module: ${module['name']} (ID: ${module['id']})",
+                        );
                         final concepts = module['concepts'] as List;
-                        final transConcepts = module['transactionConcepts'] as List;
+                        final transConcepts =
+                            module['transactionConcepts'] as List;
                         for (var c in concepts) {
-                          debugPrint("    - [SetUp] ${c['title']} (ID: ${c['id']}, File: ${c['videoUrl']})");
+                          debugPrint(
+                            "    - [SetUp] ${c['title']} (ID: ${c['id']}, File: ${c['videoUrl']})",
+                          );
                         }
                         for (var c in transConcepts) {
-                          debugPrint("    - [Transaction] ${c['title']} (ID: ${c['id']}, File: ${c['videoUrl']})");
+                          debugPrint(
+                            "    - [Transaction] ${c['title']} (ID: ${c['id']}, File: ${c['videoUrl']})",
+                          );
                         }
                       }
-                      debugPrint("---------------------------------------------");
+                      debugPrint(
+                        "---------------------------------------------",
+                      );
                     }
                   },
                   title: Row(
@@ -311,13 +462,16 @@ class _BatchVideosViewState extends State<BatchVideosView> {
                               style: const TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 18,
-                                color: Color(0xFF225663),
+                                color: Color(0xFF1B2677),
                               ),
                               overflow: TextOverflow.ellipsis,
                             ),
                             Text(
                               "Batch ID: $batchId",
-                              style: const TextStyle(color: Colors.grey, fontSize: 12),
+                              style: const TextStyle(
+                                color: Colors.grey,
+                                fontSize: 12,
+                              ),
                             ),
                           ],
                         ),
@@ -331,7 +485,17 @@ class _BatchVideosViewState extends State<BatchVideosView> {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        backgroundColor: const Color(0xFF225663),
+                        backgroundColor: const Color(0xFF1B2677),
+                      ),
+                      const SizedBox(width: 8),
+                      IconButton(
+                        icon: const Icon(
+                          Icons.delete_outline,
+                          color: Colors.redAccent,
+                        ),
+                        onPressed: () =>
+                            _confirmDeleteBatch(batchId as int, batchName),
+                        tooltip: "Delete Batch",
                       ),
                     ],
                   ),
@@ -345,19 +509,24 @@ class _BatchVideosViewState extends State<BatchVideosView> {
                             )
                           : Column(
                               children: batchModules.map<Widget>((module) {
-                                final List<dynamic> concepts = module['concepts'] ?? [];
-                                final List<dynamic> transConcepts = module['transactionConcepts'] ?? [];
+                                final List<dynamic> concepts =
+                                    module['concepts'] ?? [];
+                                final List<dynamic> transConcepts =
+                                    module['transactionConcepts'] ?? [];
 
                                 return Container(
                                   margin: const EdgeInsets.only(bottom: 16),
                                   padding: const EdgeInsets.all(16),
                                   decoration: BoxDecoration(
-                                    border: Border.all(color: Colors.grey[200]!),
+                                    border: Border.all(
+                                      color: Colors.grey[200]!,
+                                    ),
                                     borderRadius: BorderRadius.circular(8),
                                     color: Colors.white,
                                   ),
                                   child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Text(
                                         module['name'] ?? '',
@@ -380,7 +549,8 @@ class _BatchVideosViewState extends State<BatchVideosView> {
                                         ...concepts.map(_buildConceptBox),
                                       ],
                                       if (transConcepts.isNotEmpty) ...[
-                                        if (concepts.isNotEmpty) const SizedBox(height: 12),
+                                        if (concepts.isNotEmpty)
+                                          const SizedBox(height: 12),
                                         const Text(
                                           "Transaction: ——>",
                                           style: TextStyle(

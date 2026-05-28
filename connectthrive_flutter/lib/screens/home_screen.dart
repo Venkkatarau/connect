@@ -17,6 +17,7 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
     _controller = WebViewController()
       ..setJavaScriptMode(JavaScriptMode.unrestricted)
+      ..enableZoom(true)
       ..setBackgroundColor(Colors.white)
       ..setNavigationDelegate(
         NavigationDelegate(
@@ -39,7 +40,7 @@ class _HomeScreenState extends State<HomeScreen> {
           },
         ),
       )
-      ..loadRequest(Uri.parse('http://10.0.2.2:8082'));
+      ..loadRequest(Uri.parse('https://connectthrive.in'));
   }
 
   @override
@@ -52,9 +53,7 @@ class _HomeScreenState extends State<HomeScreen> {
             WebViewWidget(controller: _controller),
             if (_isLoading)
               const Center(
-                child: CircularProgressIndicator(
-                  color: Color(0xFF225663),
-                ),
+                child: CircularProgressIndicator(color: Color(0xFF225663)),
               ),
           ],
         ),

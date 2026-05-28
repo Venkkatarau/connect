@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'config/global_user.dart';
 import 'screens/login_screen.dart';
 import 'screens/dashboard_screen.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await GlobalUser.loadFromPrefs();
   runApp(const ConnectThriveApp());
 }
 
@@ -22,7 +25,7 @@ class ConnectThriveApp extends StatelessWidget {
         useMaterial3: true,
         fontFamily: 'Roboto',
       ),
-      initialRoute: '/login',
+      initialRoute: GlobalUser.isLoggedIn ? '/courses' : '/login',
       routes: {
         '/login': (context) => const LoginScreen(),
         '/courses': (context) => const DashboardScreen(),

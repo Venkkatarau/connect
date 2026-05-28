@@ -139,7 +139,7 @@ class _InstanceViewState extends State<InstanceView> {
                 }
               },
               style: ElevatedButton.styleFrom(
-                backgroundColor: const Color(0xFF225663),
+                backgroundColor: const Color(0xFF1B2677),
                 foregroundColor: Colors.white,
               ),
               child: const Text("Save"),
@@ -164,7 +164,7 @@ class _InstanceViewState extends State<InstanceView> {
                 style: TextStyle(
                   fontSize: 28,
                   fontWeight: FontWeight.bold,
-                  color: Color(0xFF225663),
+                  color: Color(0xFF1B2677),
                 ),
               ),
               ElevatedButton.icon(
@@ -172,7 +172,7 @@ class _InstanceViewState extends State<InstanceView> {
                 icon: const Icon(Icons.add),
                 label: const Text("Add New Instance"),
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFF225663),
+                  backgroundColor: const Color(0xFF1B2677),
                   foregroundColor: Colors.white,
                   padding: const EdgeInsets.symmetric(
                     horizontal: 20,
@@ -193,7 +193,7 @@ class _InstanceViewState extends State<InstanceView> {
           const SizedBox(height: 32),
           if (_loading)
             const Center(
-              child: CircularProgressIndicator(color: Color(0xFF225663)),
+              child: CircularProgressIndicator(color: Color(0xFF1B2677)),
             )
           else if (_instances.isEmpty)
             Center(
@@ -221,7 +221,7 @@ class _InstanceViewState extends State<InstanceView> {
                         icon: const Icon(Icons.add),
                         label: const Text("Add Instance"),
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: const Color(0xFF225663),
+                          backgroundColor: const Color(0xFF1B2677),
                           foregroundColor: Colors.white,
                         ),
                       ),
@@ -292,7 +292,7 @@ class _InstanceViewState extends State<InstanceView> {
                             IconButton(
                               icon: const Icon(
                                 Icons.edit,
-                                color: Color(0xFF225663),
+                                color: Color(0xFF1B2677),
                               ),
                               onPressed: () => _showInstanceDialog(instance),
                               tooltip: "Edit",

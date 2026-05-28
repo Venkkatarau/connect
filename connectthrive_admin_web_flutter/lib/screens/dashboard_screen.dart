@@ -36,13 +36,13 @@ class _DashboardScreenState extends State<DashboardScreen> {
     final isWide = MediaQuery.of(context).size.width > 900;
 
     return Scaffold(
-      backgroundColor: const Color(0xFFE8EAF6),
+      backgroundColor: const Color(0xFFF4F6F9),
       appBar: AppBar(
         title: const Text(
           "🎓 Admin Dashboard",
           style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
         ),
-        backgroundColor: const Color(0xFF225663),
+        backgroundColor: const Color(0xFF1B2677),
         elevation: 4,
         actions: [
           IconButton(
@@ -55,11 +55,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
           const SizedBox(width: 16),
         ],
       ),
-      drawer: isWide
-          ? null
-          : Drawer(
-              child: _buildSidebar(),
-            ),
+      drawer: isWide ? null : Drawer(child: _buildSidebar()),
       body: Row(
         children: [
           if (isWide)
@@ -79,7 +75,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
           Expanded(
             child: Padding(
               padding: const EdgeInsets.all(32.0),
-              child: _views[_activeTab] ?? const Center(child: Text("Select a tab")),
+              child:
+                  _views[_activeTab] ??
+                  const Center(child: Text("Select a tab")),
             ),
           ),
         ],
@@ -114,21 +112,30 @@ class _DashboardScreenState extends State<DashboardScreen> {
               final isSelected = _activeTab == path;
 
               return Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 4.0),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 16.0,
+                  vertical: 4.0,
+                ),
                 child: ListTile(
                   leading: Icon(
                     item['icon'],
-                    color: isSelected ? const Color(0xFF225663) : Colors.grey[600],
+                    color: isSelected
+                        ? const Color(0xFF1B2677)
+                        : Colors.grey[600],
                   ),
                   title: Text(
                     item['text'],
                     style: TextStyle(
-                      fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
-                      color: isSelected ? const Color(0xFF225663) : Colors.black87,
+                      fontWeight: isSelected
+                          ? FontWeight.bold
+                          : FontWeight.normal,
+                      color: isSelected
+                          ? const Color(0xFF1B2677)
+                          : Colors.black87,
                     ),
                   ),
                   selected: isSelected,
-                  selectedTileColor: const Color(0xFF225663).withOpacity(0.1),
+                  selectedTileColor: const Color(0xFF1B2677).withOpacity(0.1),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12),
                   ),

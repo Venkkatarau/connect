@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 import '../config/api.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -15,6 +16,25 @@ class _LoginScreenState extends State<LoginScreen> {
   bool _isOtpScreen = false;
   final TextEditingController _mobileController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    _checkLoginStatus();
+  }
+
+  Future<void> _checkLoginStatus() async {
+    final prefs = await SharedPreferences.getInstance();
+    final bool isLoggedIn = prefs.getBool('is_logged_in') ?? false;
+    if (isLoggedIn && mounted) {
+      Navigator.of(context).pushReplacementNamed('/dashboard');
+    }
+  }
+
+  Future<void> _saveLoginSession() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setBool('is_logged_in', true);
+  }
 
   final List<TextEditingController> _otpControllers = List.generate(4, (_) => TextEditingController());
   final List<FocusNode> _otpFocusNodes = List.generate(4, (_) => FocusNode());
@@ -138,6 +158,7 @@ class _LoginScreenState extends State<LoginScreen> {
       if (data['status'] == false) {
         final String message = data['message'] ?? '';
         if (message.contains("already registered")) {
+          await _saveLoginSession();
           if (mounted) {
             Navigator.of(context).pushReplacementNamed('/dashboard');
           }
@@ -149,6 +170,7 @@ class _LoginScreenState extends State<LoginScreen> {
         return;
       }
 
+      await _saveLoginSession();
       if (mounted) {
         Navigator.of(context).pushReplacementNamed('/dashboard');
       }
@@ -209,7 +231,6 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
 
     return Scaffold(
       backgroundColor: const Color(0xFF225663),

@@ -91,14 +91,13 @@ class _UserModuleScreenState extends State<UserModuleScreen> {
     });
   }
 
-  Future<void> _updateUserBatch(int userId, int batchId) async {
+  Future<void> _updateUserBatch(int userId, Set<int> batchIds) async {
     setState(() {
       _batchLoading = true;
     });
 
-    final url = Uri.parse(
-      "$baseUrl/v1/users/updateBatch/$userId?batchId=$batchId",
-    );
+    final queryParams = batchIds.map((id) => "batchIds=$id").join("&");
+    final url = Uri.parse("$baseUrl/v1/users/updateBatch/$userId?$queryParams");
     try {
       debugPrint("[API Request] PUT: $url");
       final response = await http.put(url);
@@ -127,7 +126,14 @@ class _UserModuleScreenState extends State<UserModuleScreen> {
   }
 
   void _showBatchSelectionDialog(dynamic user) {
-    int? selectedBatchId = user['batchId'];
+    Set<int> selectedBatchIds = {};
+    if (user['batchIds'] != null && user['batchIds'] is List) {
+      selectedBatchIds = (user['batchIds'] as List)
+          .map((e) => int.tryParse(e.toString()) ?? 0)
+          .toSet();
+    } else if (user['batchId'] != null) {
+      selectedBatchIds = {int.tryParse(user['batchId'].toString()) ?? 0};
+    }
 
     showModalBottomSheet(
       context: context,
@@ -173,18 +179,24 @@ class _UserModuleScreenState extends State<UserModuleScreen> {
                         itemCount: _batches.length,
                         itemBuilder: (context, index) {
                           final batch = _batches[index];
-                          final isSelected = selectedBatchId == batch['id'];
+                          final batchId =
+                              int.tryParse(batch['id'].toString()) ?? 0;
+                          final isSelected = selectedBatchIds.contains(batchId);
                           return ListTile(
                             leading: Icon(
                               isSelected
-                                  ? Icons.radio_button_checked
-                                  : Icons.radio_button_off,
+                                  ? Icons.check_box
+                                  : Icons.check_box_outline_blank,
                               color: const Color(0xFF225663),
                             ),
                             title: Text(batch['name'] ?? ''),
                             onTap: () {
                               setModalState(() {
-                                selectedBatchId = batch['id'];
+                                if (isSelected) {
+                                  selectedBatchIds.remove(batchId);
+                                } else {
+                                  selectedBatchIds.add(batchId);
+                                }
                               });
                             },
                           );
@@ -193,13 +205,13 @@ class _UserModuleScreenState extends State<UserModuleScreen> {
                     ),
                   const SizedBox(height: 16),
                   ElevatedButton(
-                    onPressed: (_batchLoading || selectedBatchId == null)
+                    onPressed: (_batchLoading || selectedBatchIds.isEmpty)
                         ? null
                         : () async {
                             Navigator.pop(context);
                             await _updateUserBatch(
                               user['id'],
-                              selectedBatchId!,
+                              selectedBatchIds,
                             );
                           },
                     style: ElevatedButton.styleFrom(
@@ -246,15 +258,6 @@ class _UserModuleScreenState extends State<UserModuleScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              const Text(
-                "Users & Batches",
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                  color: Color(0xFF225663),
-                ),
-              ),
-              const SizedBox(height: 16),
               // Search Bar
               Container(
                 decoration: BoxDecoration(
@@ -329,7 +332,7 @@ class _UserModuleScreenState extends State<UserModuleScreen> {
                                             ),
                                             const SizedBox(height: 4),
                                             Text(
-                                              "Batch: ${user['batchName'] ?? 'No Batch Assigned'}",
+                                              "Batch: ${user['batchNames'] != null && (user['batchNames'] as List).isNotEmpty ? (user['batchNames'] as List).join(', ') : (user['batchName'] ?? 'No Batch Assigned')}",
                                             ),
                                           ],
                                         ),

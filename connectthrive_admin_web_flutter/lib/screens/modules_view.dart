@@ -160,7 +160,7 @@ class _ModulesViewState extends State<ModulesView> {
                     }
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xFF225663),
+                    backgroundColor: const Color(0xFF1B2677),
                     foregroundColor: Colors.white,
                   ),
                   child: const Text("Save"),
@@ -187,7 +187,7 @@ class _ModulesViewState extends State<ModulesView> {
                 style: TextStyle(
                   fontSize: 28,
                   fontWeight: FontWeight.bold,
-                  color: Color(0xFF225663),
+                  color: Color(0xFF1B2677),
                 ),
               ),
               ElevatedButton.icon(
@@ -195,7 +195,7 @@ class _ModulesViewState extends State<ModulesView> {
                 icon: const Icon(Icons.add),
                 label: const Text("Add New Module"),
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFF225663),
+                  backgroundColor: const Color(0xFF1B2677),
                   foregroundColor: Colors.white,
                   padding: const EdgeInsets.symmetric(
                     horizontal: 20,
@@ -216,7 +216,7 @@ class _ModulesViewState extends State<ModulesView> {
           const SizedBox(height: 32),
           if (_loading)
             const Center(
-              child: CircularProgressIndicator(color: Color(0xFF225663)),
+              child: CircularProgressIndicator(color: Color(0xFF1B2677)),
             )
           else if (_modules.isEmpty)
             Center(
@@ -244,7 +244,7 @@ class _ModulesViewState extends State<ModulesView> {
                         icon: const Icon(Icons.add),
                         label: const Text("Add Module"),
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: const Color(0xFF225663),
+                          backgroundColor: const Color(0xFF1B2677),
                           foregroundColor: Colors.white,
                         ),
                       ),
@@ -275,10 +275,10 @@ class _ModulesViewState extends State<ModulesView> {
                           children: [
                             CircleAvatar(
                               backgroundColor:
-                                  const Color(0xFF225663).withOpacity(0.1),
+                                  const Color(0xFF1B2677).withOpacity(0.1),
                               child: const Icon(
                                 Icons.collections_bookmark,
-                                color: Color(0xFF225663),
+                                color: Color(0xFF1B2677),
                               ),
                             ),
                             const SizedBox(width: 16),
@@ -322,13 +322,13 @@ class _ModulesViewState extends State<ModulesView> {
                               decoration: BoxDecoration(
                                 color: isFree
                                     ? Colors.green.withOpacity(0.1)
-                                    : const Color(0xFF225663).withOpacity(0.1),
+                                    : const Color(0xFF1B2677).withOpacity(0.1),
                                 borderRadius: BorderRadius.circular(20),
                               ),
                               child: Text(
                                 isFree ? "Free" : "Paid",
                                 style: TextStyle(
-                                  color: isFree ? Colors.green : const Color(0xFF225663),
+                                  color: isFree ? Colors.green : const Color(0xFF1B2677),
                                   fontSize: 12,
                                   fontWeight: FontWeight.bold,
                                 ),
@@ -337,7 +337,7 @@ class _ModulesViewState extends State<ModulesView> {
                             IconButton(
                               icon: const Icon(
                                 Icons.edit,
-                                color: Color(0xFF225663),
+                                color: Color(0xFF1B2677),
                               ),
                               onPressed: () => _showModuleDialog(module),
                               tooltip: "Edit",

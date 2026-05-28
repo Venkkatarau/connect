@@ -1,0 +1,8 @@
+Release Notes - Version 2.3.2
+
+* Batch-First Organization: Grouped course materials by assigned Batches at the top level for a clearer overview.
+* Expandable Topics: Made individual Topics (Modules) within each batch expandable and collapsible to save vertical screen space.
+* Setup & Transaction Segregation: Segregated videos under separate "Setup Videos" and "Transaction Videos" headings within each expanded topic.
+* Cleaner Video Rows: Removed redundant Setup/Transaction badges next to each video's duration text for a cleaner, unified row layout.
+* No Pagination Scrolling: Replaced page-based pagination controls with a natural scroll flow for all videos under a topic.
+* Performance & Clean-up: Removed the outcome widget section and cleaned up unused compiler helpers.

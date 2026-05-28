@@ -1,9 +1,27 @@
+class BatchInfo {
+  final int id;
+  final String name;
+
+  BatchInfo({
+    required this.id,
+    required this.name,
+  });
+
+  factory BatchInfo.fromJson(Map<String, dynamic> json) {
+    return BatchInfo(
+      id: json['id'] ?? 0,
+      name: json['name'] ?? '',
+    );
+  }
+}
+
 class Concept {
   final int id;
   final String title;
   final String videoUrl;
   final String thumbnailFileName;
   final String videoType;
+  final List<BatchInfo> batchList;
   final List<String> supportingDocuments;
 
   Concept({
@@ -12,16 +30,21 @@ class Concept {
     required this.videoUrl,
     required this.thumbnailFileName,
     required this.videoType,
+    required this.batchList,
     required this.supportingDocuments,
   });
 
   factory Concept.fromJson(Map<String, dynamic> json) {
+    final batchListRaw = (json['batchList'] as List? ?? [])
+        .map((b) => BatchInfo.fromJson(b))
+        .toList();
     return Concept(
       id: json['id'] ?? 0,
       title: json['title'] ?? '',
       videoUrl: json['videoUrl'] ?? '',
       thumbnailFileName: json['thumbnailFileName'] ?? '',
       videoType: json['videoType'] ?? '',
+      batchList: batchListRaw,
       supportingDocuments: List<String>.from(json['supportingDocuments'] ?? []),
     );
   }
@@ -47,18 +70,21 @@ class Module {
   });
 
   factory Module.fromJson(Map<String, dynamic> json) {
+    final conceptsList = (json['concepts'] as List? ?? [])
+        .map((c) => Concept.fromJson(c))
+        .toList();
+    final transactionConceptsList = (json['transactionConcepts'] as List? ?? [])
+        .map((c) => Concept.fromJson(c))
+        .toList();
+
     return Module(
       id: json['id'] ?? 0,
       name: json['name'] ?? '',
       tier: json['tier'] ?? '',
       description: json['description'] ?? '',
       accessible: json['accessible'] ?? false,
-      concepts: (json['concepts'] as List? ?? [])
-          .map((c) => Concept.fromJson(c))
-          .toList(),
-      transactionConcepts: (json['transactionConcepts'] as List? ?? [])
-          .map((c) => Concept.fromJson(c))
-          .toList(),
+      concepts: conceptsList,
+      transactionConcepts: transactionConceptsList,
     );
   }
 }

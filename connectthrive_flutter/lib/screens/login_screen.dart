@@ -81,6 +81,7 @@ class _LoginScreenState extends State<LoginScreen> {
       debugPrint("Failed to fetch dynamic user info: $e");
       GlobalUser.setGlobalUser(username: name, mobileNumber: phone);
     }
+    await GlobalUser.saveToPrefs();
   }
 
   Future<void> _handleSignupWithOtp(String enteredOtp) async {

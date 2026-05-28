@@ -108,7 +108,7 @@ class _BatchesViewState extends State<BatchesView> {
                 }
               },
               style: ElevatedButton.styleFrom(
-                backgroundColor: const Color(0xFF225663),
+                backgroundColor: const Color(0xFF1B2677),
                 foregroundColor: Colors.white,
               ),
               child: const Text("Save"),
@@ -133,7 +133,7 @@ class _BatchesViewState extends State<BatchesView> {
                 style: TextStyle(
                   fontSize: 28,
                   fontWeight: FontWeight.bold,
-                  color: Color(0xFF225663),
+                  color: Color(0xFF1B2677),
                 ),
               ),
               ElevatedButton.icon(
@@ -141,7 +141,7 @@ class _BatchesViewState extends State<BatchesView> {
                 icon: const Icon(Icons.add),
                 label: const Text("Add New Batch"),
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFF225663),
+                  backgroundColor: const Color(0xFF1B2677),
                   foregroundColor: Colors.white,
                   padding: const EdgeInsets.symmetric(
                     horizontal: 20,
@@ -162,7 +162,7 @@ class _BatchesViewState extends State<BatchesView> {
           const SizedBox(height: 32),
           if (_loading)
             const Center(
-              child: CircularProgressIndicator(color: Color(0xFF225663)),
+              child: CircularProgressIndicator(color: Color(0xFF1B2677)),
             )
           else if (_batches.isEmpty)
             Center(
@@ -190,7 +190,7 @@ class _BatchesViewState extends State<BatchesView> {
                         icon: const Icon(Icons.add),
                         label: const Text("Add Batch"),
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: const Color(0xFF225663),
+                          backgroundColor: const Color(0xFF1B2677),
                           foregroundColor: Colors.white,
                         ),
                       ),
@@ -220,10 +220,10 @@ class _BatchesViewState extends State<BatchesView> {
                           children: [
                             CircleAvatar(
                               backgroundColor:
-                                  const Color(0xFF225663).withOpacity(0.1),
+                                  const Color(0xFF1B2677).withOpacity(0.1),
                               child: const Icon(
                                 Icons.group,
-                                color: Color(0xFF225663),
+                                color: Color(0xFF1B2677),
                               ),
                             ),
                             const SizedBox(width: 16),
@@ -252,7 +252,7 @@ class _BatchesViewState extends State<BatchesView> {
                             IconButton(
                               icon: const Icon(
                                 Icons.edit,
-                                color: Color(0xFF225663),
+                                color: Color(0xFF1B2677),
                               ),
                               onPressed: () => _showBatchDialog(batch),
                               tooltip: "Edit",

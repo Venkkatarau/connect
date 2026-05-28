@@ -118,11 +118,6 @@ class _ModuleAccessScreenState extends State<ModuleAccessScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              const Text(
-                "Access Requests",
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Color(0xFF225663)),
-              ),
-              const SizedBox(height: 16),
               // Search Bar
               Container(
                 decoration: BoxDecoration(
